@@ -4,8 +4,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #222;
+  background-color: #0a0a0a; /* deep black background */
+  color: #d9d9d9; /* metallic silver text */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -18,13 +18,13 @@ main {
 /* Header */
 header {
   background: #000;
-  color: #fff;
+  color: #c0c0c0;
   padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* subtle shadow */
+  box-shadow: 0 2px 6px rgba(192,192,192,0.3); /* silver glow */
 }
 
 /* Logo */
@@ -33,28 +33,31 @@ header .logo a {
   font-weight: bold;
   text-decoration: none;
   color: #fff;
+  text-shadow: 0 0 6px rgba(192,192,192,0.6);
 }
 
 /* Search bar inside header */
 .search-bar {
   display: flex;
   gap: 6px;
-  flex: 0 0 auto; /* don’t stretch */
-  max-width: 150px; /* compact size */
+  flex: 0 0 auto;
+  max-width: 150px;
   margin: 0 10px;
 }
 
 .search-bar input {
   flex: 1;
   padding: 5px 6px;
-  border: 1px solid #ddd;
+  border: 1px solid #3a4f63; /* steel blue border */
   border-radius: 4px;
   font-size: 0.85rem;
+  background: #1a1a1a;
+  color: #d9d9d9;
 }
 
 .search-bar button {
-  background: #fff;
-  color: #000;
+  background: #3a4f63;
+  color: #fff;
   border: none;
   padding: 5px 8px;
   cursor: pointer;
@@ -63,8 +66,8 @@ header .logo a {
 }
 
 .search-bar button:hover {
-  background: #333;
-  color: #fff;
+  background: #c0c0c0;
+  color: #000;
 }
 
 /* Hamburger button */
@@ -75,7 +78,7 @@ header .logo a {
   border: none;
   color: #fff;
   cursor: pointer;
-  margin-left: 8px; /* spacing so it doesn’t touch search bar */
+  margin-left: 8px;
 }
 
 /* Nav links */
@@ -89,14 +92,18 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #fff;
+  color: #d9d9d9;
   font-weight: 500;
+}
+
+nav ul li a:hover {
+  color: #c0c0c0;
 }
 
 /* Footer */
 footer {
   background: #000;
-  color: #fff;
+  color: #7a7a7a;
   text-align: center;
   padding: 20px;
   margin-top: auto;
@@ -108,21 +115,23 @@ footer {
   text-align: center;
   color: #fff;
   padding: 60px 20px;
-  background: url('assets/images/hero.jpg') no-repeat center center/cover;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 15px;
+  color: #c0c0c0;
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 20px;
+  color: #7a7a7a;
 }
 
 .btn {
-  background: #000;
+  background: linear-gradient(145deg, #3a4f63, #7a7a7a);
   color: #fff;
   padding: 12px 20px;
   text-decoration: none;
@@ -131,7 +140,8 @@ footer {
 }
 
 .btn:hover {
-  background: #333;
+  background: linear-gradient(145deg, #c0c0c0, #3a4f63);
+  color: #000;
 }
 
 /* Product grid */
@@ -143,15 +153,17 @@ footer {
 }
 
 .product-card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: #1a1a1a;
+  border: 1px solid #3a4f63;
   padding: 20px;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #d9d9d9;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 0 12px rgba(192,192,192,0.4);
 }
 
 .product-card img {
@@ -159,21 +171,23 @@ footer {
   height: auto;
   margin-bottom: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(192,192,192,0.3);
 }
 
 .product-card h3 {
   font-size: 1.1rem;
   margin-bottom: 10px;
+  color: #c0c0c0;
 }
 
 .product-card p {
   font-weight: bold;
   margin-bottom: 10px;
+  color: #7a7a7a;
 }
 
 button {
-  background: #000;
+  background: #3a4f63;
   color: #fff;
   border: none;
   padding: 10px 15px;
@@ -182,7 +196,8 @@ button {
 }
 
 button:hover {
-  background: #333;
+  background: #c0c0c0;
+  color: #000;
 }
 
 /* Cart & checkout */
@@ -194,7 +209,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #3a4f63;
   padding: 10px 0;
 }
 
@@ -214,10 +229,11 @@ button:hover {
   margin-top: 20px;
   font-size: 1.2rem;
   font-weight: bold;
+  color: #c0c0c0;
 }
 
 #checkoutBtn {
-  background: green;
+  background: #3a4f63;
   color: #fff;
   padding: 12px 20px;
   border: none;
@@ -227,19 +243,21 @@ button:hover {
 }
 
 #checkoutBtn:hover {
-  background: darkgreen;
+  background: #c0c0c0;
+  color: #000;
 }
 
 #order-summary h2 {
-  color: green;
+  color: #3a4f63;
   margin-top: 20px;
 }
 
 #confirmation-details {
   margin: 20px 0;
   padding: 15px;
-  border: 1px solid #ddd;
-  background: #f9f9f9;
+  border: 1px solid #3a4f63;
+  background: #1a1a1a;
+  color: #d9d9d9;
 }
 
 /* Mobile styles */
@@ -252,17 +270,17 @@ button:hover {
     display: none;
     background: #000;
     position: absolute;
-    top: 55px; /* just below header */
+    top: 55px;
     left: 0;
     width: 100%;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease; /* smooth slide */
+    transition: max-height 0.3s ease;
   }
 
   nav.show {
     display: block;
-    max-height: 300px; /* enough space for dropdown */
+    max-height: 300px;
   }
 
   nav ul {
@@ -270,7 +288,6 @@ button:hover {
     padding: 10px;
   }
 
-  /* Keep search bar compact inside header */
   .search-bar {
     max-width: 120px;
     margin: 0 5px;
