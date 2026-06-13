@@ -157,4 +157,37 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Checkout flow
+document.addEventListener("DOMContentLoaded", () => {
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+      window.location.href = "checkout.html";
+    });
+  }
+
+  if (document.title.includes("Checkout")) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let summary = document.getElementById("order-summary");
+
+    if (cart.length === 0) {
+      summary.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      let total = 0;
+      cart.forEach(item => {
+        let div = document.createElement("div");
+        div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+        summary.appendChild(div);
+
+        let priceNum = parseInt(item.price.replace(/\D/g, ""));
+        total += priceNum;
+      });
+
+      let totalDiv = document.createElement("div");
+      totalDiv.innerHTML = `<h3>Total: ₦${total.toLocaleString()}</h3>`;
+      summary.appendChild(totalDiv);
+    }
+  }
+});
+
 
