@@ -257,4 +257,27 @@ button:hover {
 .fav-item button.remove-fav:hover {
   background: darkred;
 }
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-bar button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #333;
+}
 
