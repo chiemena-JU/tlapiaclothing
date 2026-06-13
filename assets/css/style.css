@@ -19,11 +19,12 @@ main {
 header {
   background: #000;
   color: #fff;
-  padding: 10px 15px;
+  padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* subtle shadow */
 }
 
 /* Logo */
@@ -38,25 +39,27 @@ header .logo a {
 .search-bar {
   display: flex;
   gap: 6px;
-  flex: 1;
-  max-width: 250px; /* keeps it compact */
+  flex: 0 0 auto; /* don’t stretch */
+  max-width: 150px; /* compact size */
   margin: 0 10px;
 }
 
 .search-bar input {
   flex: 1;
-  padding: 6px;
+  padding: 5px 6px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 0.85rem;
 }
 
 .search-bar button {
   background: #fff;
   color: #000;
   border: none;
-  padding: 6px 10px;
+  padding: 5px 8px;
   cursor: pointer;
   font-weight: 500;
+  font-size: 0.85rem;
 }
 
 .search-bar button:hover {
@@ -72,6 +75,7 @@ header .logo a {
   border: none;
   color: #fff;
   cursor: pointer;
+  margin-left: 8px; /* spacing so it doesn’t touch search bar */
 }
 
 /* Nav links */
@@ -251,6 +255,14 @@ button:hover {
     top: 55px; /* just below header */
     left: 0;
     width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease; /* smooth slide */
+  }
+
+  nav.show {
+    display: block;
+    max-height: 300px; /* enough space for dropdown */
   }
 
   nav ul {
@@ -258,13 +270,9 @@ button:hover {
     padding: 10px;
   }
 
-  nav.show {
-    display: block;
-  }
-
   /* Keep search bar compact inside header */
   .search-bar {
-    max-width: 150px;
+    max-width: 120px;
     margin: 0 5px;
   }
 }
