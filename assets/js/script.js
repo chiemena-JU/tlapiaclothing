@@ -135,3 +135,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Search functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const searchBtn = document.getElementById("searchBtn");
+
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      let query = searchInput.value.toLowerCase();
+      let products = document.querySelectorAll(".product-card");
+
+      products.forEach(product => {
+        let name = product.querySelector("h3").textContent.toLowerCase();
+        if (name.includes(query)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    });
+  }
+});
+
+
