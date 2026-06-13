@@ -249,3 +249,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// Update cart count badge
+function updateCartCount() {
+  const cartCountEl = document.getElementById("cart-count");
+  if (cartCountEl) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cartCountEl.textContent = cart.length;
+  }
+}
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+// Also update whenever an item is added to cart
+document.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Add to Cart")) {
+    setTimeout(updateCartCount, 100); // slight delay to refresh count
+  }
+});
+
