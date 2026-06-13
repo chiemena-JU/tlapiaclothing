@@ -11,6 +11,10 @@ html, body {
   min-height: 100vh; /* ensures footer sticks */
 }
 
+main {
+  flex: 1; /* pushes footer down */
+}
+
 /* Header */
 header {
   background: #000;
@@ -42,41 +46,15 @@ header nav ul li a {
   font-weight: 500;
 }
 
-/* Search Bar */
-.search-bar {
-  display: flex;
-  gap: 10px;
-  margin-left: 20px;
-}
-
-.search-bar input {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.search-bar button {
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.search-bar button:hover {
-  background: #333;
-}
-
 /* Footer */
 footer {
   background: #000;
   color: #fff;
   text-align: center;
   padding: 20px;
-  margin-top: auto; /* pushes footer down */
+  margin-top: auto; /* sticks footer to bottom */
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   text-align: center;
@@ -108,32 +86,6 @@ footer {
   background: #333;
 }
 
-/* Intro & Highlights */
-.intro, .highlights {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.highlight-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.highlight-links a {
-  background: purple;
-  color: #fff;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.highlight-links a:hover {
-  background: #5a2d82;
-}
-
-/* Product Grid */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -171,7 +123,6 @@ footer {
   margin-bottom: 10px;
 }
 
-/* Buttons */
 button {
   background: #000;
   color: #fff;
@@ -185,7 +136,6 @@ button:hover {
   background: #333;
 }
 
-/* Cart */
 .cart-items {
   padding: 20px;
 }
@@ -216,32 +166,6 @@ button:hover {
   font-weight: bold;
 }
 
-/* Favorites */
-.fav-items {
-  padding: 20px;
-}
-
-.fav-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
-
-.fav-item button.remove-fav {
-  background: crimson;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.fav-item button.remove-fav:hover {
-  background: darkred;
-}
-
-/* Checkout */
 #checkoutBtn {
   background: green;
   color: #fff;
@@ -261,24 +185,9 @@ button:hover {
   margin-top: 20px;
 }
 
-main h2 {
-  margin-top: 20px;
-}
-
-label {
-  display: block;
-  margin: 5px 0;
-}
-
-main h1 {
-  color: green;
-  margin-bottom: 10px;
-}
-
 #confirmation-details {
   margin: 20px 0;
   padding: 15px;
   border: 1px solid #ddd;
   background: #f9f9f9;
 }
-
