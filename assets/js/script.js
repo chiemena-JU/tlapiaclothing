@@ -206,26 +206,3 @@ if (placeOrderBtn) {
   });
 }
 
-
-    if (document.title.includes("Order Confirmation")) {
-  let details = document.getElementById("confirmation-details");
-  let order = JSON.parse(localStorage.getItem("lastOrder"));
-
-  if (order) {
-    order.cart.forEach(item => {
-      let div = document.createElement("div");
-      div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
-      details.appendChild(div);
-    });
-
-    let paymentDiv = document.createElement("div");
-    paymentDiv.innerHTML = `<p>Payment Method: <strong>${order.paymentMethod === "delivery" ? "Pay on Delivery" : "Card Payment (Simulation)"}</strong></p>`;
-    details.appendChild(paymentDiv);
-
-    // Clear last order after showing
-    localStorage.removeItem("lastOrder");
-  } else {
-    details.innerHTML = "<p>No order found.</p>";
-  }
-}
-
