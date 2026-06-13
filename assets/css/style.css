@@ -216,3 +216,49 @@ button:hover {
 .search-bar button:hover {
   background: #333;
 }
+
+/* Hamburger button */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Default nav (desktop) */
+nav ul {
+  display: flex;
+  gap: 25px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    background: #000;
+    position: absolute;
+    top: 60px; /* below header */
+    left: 0;
+    width: 100%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  nav.show {
+    display: block;
+  }
+
+  .search-bar {
+    display: none; /* optional: hide search bar on mobile */
+  }
+}
+
