@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         cartContainer.appendChild(div);
 
+        // FIX: parse correctly, keep ₦
         let priceNum = parseFloat(item.price.replace(/₦|,/g, ""));
         total += priceNum;
       });
@@ -145,16 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (searchBtn && searchInput) {
     searchBtn.addEventListener("click", () => {
-      let query = searchInput.value.toLowerCase().trim();
-      if (query) {
-        localStorage.setItem("searchQuery", query);
-        window.location.href = "products.html";
-      }
+      let query = searchInput.value.toLowerCase();
+      localStorage.setItem("searchQuery", query);
+      window.location.href = "products.html";
     });
   }
 
   // Apply search filter on products page
-  if (document.body.classList.contains("products-page")) {
+  if (document.title.includes("Store")) {
     let query = localStorage.getItem("searchQuery");
     if (query) {
       let products = document.querySelectorAll(".product-card");
@@ -193,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
         div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
         summary.appendChild(div);
 
+        // FIX: parse correctly
         let priceNum = parseFloat(item.price.replace(/₦|,/g, ""));
         total += priceNum;
       });
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Mobile menu toggle (only once!)
+// Mobile menu toggle
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const navMenu = document.getElementById("navMenu");
@@ -245,13 +245,18 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuToggle && navMenu) {
     menuToggle.addEventListener("click", () => {
       navMenu.classList.toggle("show");
+    });
+  }
+});
 
-      // Optional: add smooth animation class toggle
-      if (navMenu.classList.contains("show")) {
-        navMenu.style.maxHeight = navMenu.scrollHeight + "px";
-      } else {
-        navMenu.style.maxHeight = null;
-      }
+// Mobile menu toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
     });
   }
 });
