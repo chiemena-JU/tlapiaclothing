@@ -172,6 +172,25 @@ button:hover, .btn:hover {
   margin-bottom: 10px;
 }
 
+.product-card button {
+  background: linear-gradient(145deg, #555, #888);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;   /* added padding */
+  margin: 6px 0;        /* spacing between buttons */
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  width: 100%;          /* make buttons full width inside card */
+}
+
+.product-card button:hover {
+  background: linear-gradient(145deg, #c0c0c0, #555);
+  color: #000;
+}
+
+
 /* Cart & checkout */
 .cart-items {
   padding: 20px;
