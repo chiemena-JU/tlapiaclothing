@@ -85,3 +85,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+// Simple favorites storage
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+// Add to favorites
+document.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Add to Favorites")) {
+    let productName = e.target.parentElement.querySelector("h3").textContent;
+    let productPrice = e.target.parentElement.querySelector("p").textContent;
+    favorites.push({ name: productName, price: productPrice });
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert(productName + " added to favorites!");
+  }
+});
+
+// Show favorites if on favorites.html
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.title.includes("Favorites")) {
+    let favContainer = document.createElement("div");
+    favContainer.classList.add("fav-items");
+
+    if (favorites.length === 0) {
+      favContainer.innerHTML = "<p>You haven’t added any favorites yet.</p>";
+    } else {
+      favorites.forEach((item, index) => {
+        let div = document.createElement("div");
+        div.classList.add("fav-item");
+        div.innerHTML = `
+          <strong>${item.name}</strong> - ${item.price}
+          <button class="remove-fav" data-index="${index}">Remove</button>
+        `;
+        favContainer.appendChild(div);
+      });
+    }
+
+    document.querySelector("main").appendChild(favContainer);
+
+    // Remove favorite functionality
+    document.querySelectorAll(".remove-fav").forEach(btn => {
+      btn.addEventListener("click", () => {
+        let index = btn.getAttribute("data-index");
+        favorites.splice(index, 1);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        location.reload(); // refresh favorites page
+      });
+    });
+  }
+});
+
