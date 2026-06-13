@@ -9,11 +9,16 @@
 <body>
   <div id="header"></div>
 
-  <main>
-    <h1>Checkout</h1>
-    <div id="order-summary"></div>
-    <button class="btn">Place Order</button>
-  </main>
+ <main>
+  <h1>Checkout</h1>
+  <div id="order-summary"></div>
+
+  <h2>Choose Payment Method</h2>
+  <label><input type="radio" name="payment" value="delivery" checked> Pay on Delivery</label><br>
+  <label><input type="radio" name="payment" value="card"> Card Payment</label><br><br>
+
+  <button id="placeOrderBtn" class="btn">Place Order</button>
+</main>
 
   <div id="footer"></div>
   <script src="assets/js/script.js"></script>
