@@ -257,3 +257,25 @@ button:hover, .btn:hover {
     margin: 0 5px;
   }
 }
+/* Shopping Bag link */
+.shopping-bag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-decoration: none;
+}
+
+.shopping-bag .cart-icon {
+  font-size: 1.1rem;
+  color: #c0c0c0; /* metallic silver */
+}
+
+.shopping-bag:hover {
+  color: #fff;
+}
+
+.shopping-bag:hover .cart-icon {
+  color: #fff;
+}
