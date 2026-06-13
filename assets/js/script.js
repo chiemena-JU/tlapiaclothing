@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     sortSelect.addEventListener("change", () => {
       let products = Array.from(productGrid.children);
       products.sort((a, b) => {
-        let priceA = parseInt(a.querySelector("p").textContent.replace(/\D/g, ""));
-        let priceB = parseInt(b.querySelector("p").textContent.replace(/\D/g, ""));
+        let priceA = parseFloat(a.querySelector("p").textContent.replace(/₦|,/g, ""));
+        let priceB = parseFloat(b.querySelector("p").textContent.replace(/₦|,/g, ""));
         return sortSelect.value === "low-high" ? priceA - priceB : priceB - priceA;
       });
       products.forEach(p => productGrid.appendChild(p));
@@ -66,7 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         cartContainer.appendChild(div);
 
-        let priceNum = parseInt(item.price.replace(/\D/g, ""));
+        // FIX: parse correctly, keep ₦
+        let priceNum = parseFloat(item.price.replace(/₦|,/g, ""));
         total += priceNum;
       });
 
@@ -191,7 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
         div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
         summary.appendChild(div);
 
-        let priceNum = parseInt(item.price.replace(/\D/g, ""));
+        // FIX: parse correctly
+        let priceNum = parseFloat(item.price.replace(/₦|,/g, ""));
         total += priceNum;
       });
 
