@@ -188,19 +188,44 @@ document.addEventListener("DOMContentLoaded", () => {
     summary.appendChild(totalDiv);
   }
 
-  // Place Order button with payment simulation
-  const placeOrderBtn = document.getElementById("placeOrderBtn");
+  // Place Order button with payment simulation + redirect
+const placeOrderBtn = document.getElementById("placeOrderBtn");
+if (placeOrderBtn) {
   placeOrderBtn.addEventListener("click", () => {
     let paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    localStorage.removeItem("cart"); // clear cart
+    // Save order details temporarily
+    localStorage.setItem("lastOrder", JSON.stringify({ cart, paymentMethod }));
 
-    if (paymentMethod === "delivery") {
-      summary.innerHTML = "<h2>✅ Order placed successfully!</h2><p>You chose <strong>Pay on Delivery</strong>. Your items will be delivered soon.</p>";
-    } else {
-      summary.innerHTML = "<h2>✅ Order placed successfully!</h2><p>You chose <strong>Card Payment</strong>. (Simulation only — no real payment processed.)</p>";
-    }
+    // Clear cart
+    localStorage.removeItem("cart");
 
-    placeOrderBtn.style.display = "none"; // hide button after placing order
+    // Redirect to confirmation page
+    window.location.href = "confirmation.html";
   });
 }
+
+
+    if (document.title.includes("Order Confirmation")) {
+  let details = document.getElementById("confirmation-details");
+  let order = JSON.parse(localStorage.getItem("lastOrder"));
+
+  if (order) {
+    order.cart.forEach(item => {
+      let div = document.createElement("div");
+      div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+      details.appendChild(div);
+    });
+
+    let paymentDiv = document.createElement("div");
+    paymentDiv.innerHTML = `<p>Payment Method: <strong>${order.paymentMethod === "delivery" ? "Pay on Delivery" : "Card Payment (Simulation)"}</strong></p>`;
+    details.appendChild(paymentDiv);
+
+    // Clear last order after showing
+    localStorage.removeItem("lastOrder");
+  } else {
+    details.innerHTML = "<p>No order found.</p>";
+  }
+}
+
