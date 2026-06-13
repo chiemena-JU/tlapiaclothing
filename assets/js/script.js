@@ -15,7 +15,7 @@ window.onload = () => {
   loadComponent("footer", "partials/footer.html");
 };
 
-// Sorting functionality
+// Sorting functionality (products page)
 document.addEventListener("DOMContentLoaded", () => {
   const sortSelect = document.getElementById("sort");
   const productGrid = document.querySelector(".product-grid");
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Simple cart storage
+// Cart storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // Add to cart
@@ -47,7 +47,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Show cart items if on cart.html
+// Show cart items (cart.html)
 document.addEventListener("DOMContentLoaded", () => {
   if (document.title.includes("Shopping Bag")) {
     let cartContainer = document.createElement("div");
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("main").appendChild(cartContainer);
 
-    // Remove item functionality
+    // Remove item
     document.querySelectorAll(".remove").forEach(btn => {
       btn.addEventListener("click", () => {
         let index = btn.getAttribute("data-index");
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Simple favorites storage
+// Favorites storage
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 // Add to favorites
@@ -104,7 +104,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Show favorites if on favorites.html
+// Show favorites (favorites.html)
 document.addEventListener("DOMContentLoaded", () => {
   if (document.title.includes("Favorites")) {
     let favContainer = document.createElement("div");
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("main").appendChild(favContainer);
 
-    // Remove favorite functionality
+    // Remove favorite
     document.querySelectorAll(".remove-fav").forEach(btn => {
       btn.addEventListener("click", () => {
         let index = btn.getAttribute("data-index");
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Search functionality
+// Global search (header bar)
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const searchBtn = document.getElementById("searchBtn");
@@ -146,8 +146,16 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchBtn && searchInput) {
     searchBtn.addEventListener("click", () => {
       let query = searchInput.value.toLowerCase();
-      let products = document.querySelectorAll(".product-card");
+      localStorage.setItem("searchQuery", query);
+      window.location.href = "products.html";
+    });
+  }
 
+  // Apply search filter on products page
+  if (document.title.includes("Store")) {
+    let query = localStorage.getItem("searchQuery");
+    if (query) {
+      let products = document.querySelectorAll(".product-card");
       products.forEach(product => {
         let name = product.querySelector("h3").textContent.toLowerCase();
         if (name.includes(query)) {
@@ -156,7 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
           product.style.display = "none";
         }
       });
-    });
+      localStorage.removeItem("searchQuery");
+    }
   }
 });
 
@@ -191,20 +200,14 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.appendChild(totalDiv);
     }
 
-    // Place Order button with payment simulation + redirect
     const placeOrderBtn = document.getElementById("placeOrderBtn");
     if (placeOrderBtn) {
       placeOrderBtn.addEventListener("click", () => {
         let paymentMethod = document.querySelector('input[name="payment"]:checked').value;
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        // Save order details temporarily
         localStorage.setItem("lastOrder", JSON.stringify({ cart, paymentMethod }));
-
-        // Clear cart
         localStorage.removeItem("cart");
-
-        // Redirect to confirmation page
         window.location.href = "confirmation.html";
       });
     }
@@ -225,7 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
       paymentDiv.innerHTML = `<p>Payment Method: <strong>${order.paymentMethod === "delivery" ? "Pay on Delivery" : "Card Payment (Simulation)"}</strong></p>`;
       details.appendChild(paymentDiv);
 
-      // Clear last order after showing
       localStorage.removeItem("lastOrder");
     } else {
       details.innerHTML = "<p>No order found.</p>";
