@@ -11,23 +11,6 @@ window.onload = () => {
   loadComponent("footer", "partials/footer.html");
 };
 
-// Sorting functionality
-document.addEventListener("DOMContentLoaded", () => {
-  const sortSelect = document.getElementById("sort");
-  const productGrid = document.querySelector(".product-grid");
-
-  sortSelect.addEventListener("change", () => {
-    let products = Array.from(productGrid.children);
-    products.sort((a, b) => {
-      let priceA = parseInt(a.querySelector("p").textContent.replace(/\D/g, ""));
-      let priceB = parseInt(b.querySelector("p").textContent.replace(/\D/g, ""));
-      return sortSelect.value === "low-high" ? priceA - priceB : priceB - priceA;
-    });
-    products.forEach(p => productGrid.appendChild(p));
-  });
-});
-
-
 // Simple cart storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -61,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         cartContainer.appendChild(div);
 
-        // Extract numeric price
         let priceNum = parseInt(item.price.replace(/\D/g, ""));
         total += priceNum;
       });
@@ -80,78 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let index = btn.getAttribute("data-index");
         cart.splice(index, 1);
         localStorage.setItem("cart", JSON.stringify(cart));
-        location.reload(); // refresh cart page
-      });
-    });
-  }
-});
-
-
-// Simple favorites storage
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
-// Add to favorites
-document.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Add to Favorites")) {
-    let productName = e.target.parentElement.querySelector("h3").textContent;
-    let productPrice = e.target.parentElement.querySelector("p").textContent;
-    favorites.push({ name: productName, price: productPrice });
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    alert(productName + " added to favorites!");
-  }
-});
-
-// Show favorites if on favorites.html
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.title.includes("Favorites")) {
-    let favContainer = document.createElement("div");
-    favContainer.classList.add("fav-items");
-
-    if (favorites.length === 0) {
-      favContainer.innerHTML = "<p>You haven’t added any favorites yet.</p>";
-    } else {
-      favorites.forEach((item, index) => {
-        let div = document.createElement("div");
-        div.classList.add("fav-item");
-        div.innerHTML = `
-          <strong>${item.name}</strong> - ${item.price}
-          <button class="remove-fav" data-index="${index}">Remove</button>
-        `;
-        favContainer.appendChild(div);
-      });
-    }
-
-    document.querySelector("main").appendChild(favContainer);
-
-    // Remove favorite functionality
-    document.querySelectorAll(".remove-fav").forEach(btn => {
-      btn.addEventListener("click", () => {
-        let index = btn.getAttribute("data-index");
-        favorites.splice(index, 1);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-        location.reload(); // refresh favorites page
-      });
-    });
-  }
-});
-
-// Search functionality
-document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("searchInput");
-  const searchBtn = document.getElementById("searchBtn");
-
-  if (searchBtn) {
-    searchBtn.addEventListener("click", () => {
-      let query = searchInput.value.toLowerCase();
-      let products = document.querySelectorAll(".product-card");
-
-      products.forEach(product => {
-        let name = product.querySelector("h3").textContent.toLowerCase();
-        if (name.includes(query)) {
-          product.style.display = "block";
-        } else {
-          product.style.display = "none";
-        }
+        location.reload();
       });
     });
   }
@@ -167,42 +78,66 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (document.title.includes("Checkout")) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let summary = document.getElementById("order-summary");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let summary = document.getElementById("order-summary");
 
-  if (cart.length === 0) {
-    summary.innerHTML = "<p>Your cart is empty.</p>";
-  } else {
-    let total = 0;
-    cart.forEach(item => {
-      let div = document.createElement("div");
-      div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
-      summary.appendChild(div);
+    if (cart.length === 0) {
+      summary.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      let total = 0;
+      cart.forEach(item => {
+        let div = document.createElement("div");
+        div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+        summary.appendChild(div);
 
-      let priceNum = parseInt(item.price.replace(/\D/g, ""));
-      total += priceNum;
-    });
+        let priceNum = parseInt(item.price.replace(/\D/g, ""));
+        total += priceNum;
+      });
 
-    let totalDiv = document.createElement("div");
-    totalDiv.innerHTML = `<h3>Total: ₦${total.toLocaleString()}</h3>`;
-    summary.appendChild(totalDiv);
+      let totalDiv = document.createElement("div");
+      totalDiv.innerHTML = `<h3>Total: ₦${total.toLocaleString()}</h3>`;
+      summary.appendChild(totalDiv);
+    }
+
+    // Place Order button with payment simulation + redirect
+    const placeOrderBtn = document.getElementById("placeOrderBtn");
+    if (placeOrderBtn) {
+      placeOrderBtn.addEventListener("click", () => {
+        let paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Save order details temporarily
+        localStorage.setItem("lastOrder", JSON.stringify({ cart, paymentMethod }));
+
+        // Clear cart
+        localStorage.removeItem("cart");
+
+        // Redirect to confirmation page
+        window.location.href = "confirmation.html";
+      });
+    }
   }
 
-  // Place Order button with payment simulation + redirect
-const placeOrderBtn = document.getElementById("placeOrderBtn");
-if (placeOrderBtn) {
-  placeOrderBtn.addEventListener("click", () => {
-    let paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (document.title.includes("Order Confirmation")) {
+    let details = document.getElementById("confirmation-details");
+    let order = JSON.parse(localStorage.getItem("lastOrder"));
 
-    // Save order details temporarily
-    localStorage.setItem("lastOrder", JSON.stringify({ cart, paymentMethod }));
+    if (order) {
+      order.cart.forEach(item => {
+        let div = document.createElement("div");
+        div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+        details.appendChild(div);
+      });
 
-    // Clear cart
-    localStorage.removeItem("cart");
+      let paymentDiv = document.createElement("div");
+      paymentDiv.innerHTML = `<p>Payment Method: <strong>${order.paymentMethod === "delivery" ? "Pay on Delivery" : "Card Payment (Simulation)"}</strong></p>`;
+      details.appendChild(paymentDiv);
 
-    // Redirect to confirmation page
-    window.location.href = "confirmation.html";
-  });
-}
+      // Clear last order after showing
+      localStorage.removeItem("lastOrder");
+    } else {
+      details.innerHTML = "<p>No order found.</p>";
+    }
+  }
+});
 
