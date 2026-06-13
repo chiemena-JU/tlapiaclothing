@@ -167,33 +167,40 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (document.title.includes("Checkout")) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let summary = document.getElementById("order-summary");
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let summary = document.getElementById("order-summary");
 
-    if (cart.length === 0) {
-      summary.innerHTML = "<p>Your cart is empty.</p>";
+  if (cart.length === 0) {
+    summary.innerHTML = "<p>Your cart is empty.</p>";
+  } else {
+    let total = 0;
+    cart.forEach(item => {
+      let div = document.createElement("div");
+      div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+      summary.appendChild(div);
+
+      let priceNum = parseInt(item.price.replace(/\D/g, ""));
+      total += priceNum;
+    });
+
+    let totalDiv = document.createElement("div");
+    totalDiv.innerHTML = `<h3>Total: ₦${total.toLocaleString()}</h3>`;
+    summary.appendChild(totalDiv);
+  }
+
+  // Place Order button with payment simulation
+  const placeOrderBtn = document.getElementById("placeOrderBtn");
+  placeOrderBtn.addEventListener("click", () => {
+    let paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+    localStorage.removeItem("cart"); // clear cart
+
+    if (paymentMethod === "delivery") {
+      summary.innerHTML = "<h2>✅ Order placed successfully!</h2><p>You chose <strong>Pay on Delivery</strong>. Your items will be delivered soon.</p>";
     } else {
-      let total = 0;
-      cart.forEach(item => {
-        let div = document.createElement("div");
-        div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
-        summary.appendChild(div);
-
-        let priceNum = parseInt(item.price.replace(/\D/g, ""));
-        total += priceNum;
-      });
-
-      let totalDiv = document.createElement("div");
-      totalDiv.innerHTML = `<h3>Total: ₦${total.toLocaleString()}</h3>`;
-      summary.appendChild(totalDiv);
+      summary.innerHTML = "<h2>✅ Order placed successfully!</h2><p>You chose <strong>Card Payment</strong>. (Simulation only — no real payment processed.)</p>";
     }
 
-    // Place Order button
-    const placeOrderBtn = document.querySelector(".btn");
-    placeOrderBtn.addEventListener("click", () => {
-      localStorage.removeItem("cart"); // clear cart
-      summary.innerHTML = "<h2>✅ Order placed successfully!</h2><p>Thank you for shopping with Tlapia Clothing.</p>";
-      placeOrderBtn.style.display = "none"; // hide button after placing order
-    });
-  }
-});
+    placeOrderBtn.style.display = "none"; // hide button after placing order
+  });
+}
