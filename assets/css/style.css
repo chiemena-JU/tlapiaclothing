@@ -234,3 +234,27 @@ button:hover {
   font-weight: bold;
 }
 
+.fav-items {
+  padding: 20px;
+}
+
+.fav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.fav-item button.remove-fav {
+  background: crimson;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.fav-item button.remove-fav:hover {
+  background: darkred;
+}
+
