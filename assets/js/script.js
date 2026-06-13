@@ -242,4 +242,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const navMenu = document.getElementById("navMenu");
 
-  if (menuToggle
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+
+      // Optional: add smooth animation class toggle
+      if (navMenu.classList.contains("show")) {
+        navMenu.style.maxHeight = navMenu.scrollHeight + "px";
+      } else {
+        navMenu.style.maxHeight = null;
+      }
+    });
+  }
+});
