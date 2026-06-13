@@ -302,3 +302,17 @@ footer {
   padding: 20px;
   margin-top: auto; /* ensures footer stays at bottom */
 }
+
+#checkoutBtn {
+  background: green;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#checkoutBtn:hover {
+  background: darkgreen;
+}
