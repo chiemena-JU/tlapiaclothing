@@ -127,7 +127,7 @@ button:hover, .btn:hover {
   color: #000;
 }
 
-/* Product grid */
+* Product grid */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -137,30 +137,24 @@ button:hover, .btn:hover {
 
 .product-card {
   background: #e0e0e0;
-  border: none;
-  padding: 10px;              /* reduce padding so image can grow */
+  border: 1px solid #333536;
+  padding: 20px;
   text-align: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   color: #2c2c2c;
-  min-height: 450px;          /* longer cards */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* let image take space at top */
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+  box-shadow: 0 0 12px rgba(192,192,192,0.4);
 }
 
 .product-card img {
-  width: 100%;
-  height: 100%;               /* let image fill available height */
-  max-height: 320px;          /* control maximum height */
-  object-fit: cover;          /* keep proportions */
+  max-width: 100%;
+  height: auto;
   margin-bottom: 15px;
   border-radius: 8px;
-  flex-grow: 1;               /* allow image to expand vertically */
+  box-shadow: 0 2px 6px rgba(192,192,192,0.3);
 }
 
 .product-card h3 {
