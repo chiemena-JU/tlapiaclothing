@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
 // Simple cart storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -50,14 +51,37 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cart.length === 0) {
       cartContainer.innerHTML = "<p>Your cart is empty.</p>";
     } else {
-      cart.forEach(item => {
+      let total = 0;
+      cart.forEach((item, index) => {
         let div = document.createElement("div");
         div.classList.add("cart-item");
-        div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+        div.innerHTML = `
+          <strong>${item.name}</strong> - ${item.price}
+          <button class="remove" data-index="${index}">Remove</button>
+        `;
         cartContainer.appendChild(div);
+
+        // Extract numeric price
+        let priceNum = parseInt(item.price.replace(/\D/g, ""));
+        total += priceNum;
       });
+
+      let totalDiv = document.createElement("div");
+      totalDiv.classList.add("cart-total");
+      totalDiv.innerHTML = `<h3>Total: ₦${total.toLocaleString()}</h3>`;
+      cartContainer.appendChild(totalDiv);
     }
 
     document.querySelector("main").appendChild(cartContainer);
+
+    // Remove item functionality
+    document.querySelectorAll(".remove").forEach(btn => {
+      btn.addEventListener("click", () => {
+        let index = btn.getAttribute("data-index");
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload(); // refresh cart page
+      });
+    });
   }
 });
