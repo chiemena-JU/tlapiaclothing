@@ -187,7 +187,13 @@ document.addEventListener("DOMContentLoaded", () => {
       totalDiv.innerHTML = `<h3>Total: ₦${total.toLocaleString()}</h3>`;
       summary.appendChild(totalDiv);
     }
+
+    // Place Order button
+    const placeOrderBtn = document.querySelector(".btn");
+    placeOrderBtn.addEventListener("click", () => {
+      localStorage.removeItem("cart"); // clear cart
+      summary.innerHTML = "<h2>✅ Order placed successfully!</h2><p>Thank you for shopping with Tlapia Clothing.</p>";
+      placeOrderBtn.style.display = "none"; // hide button after placing order
+    });
   }
 });
-
-
