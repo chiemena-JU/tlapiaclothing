@@ -1,10 +1,24 @@
-// Load header and footer
+// Utility: Load header and footer
 async function loadComponent(id, file) {
   try {
     const response = await fetch(file);
     if (!response.ok) throw new Error(`Failed to load ${file}`);
     const text = await response.text();
     document.getElementById(id).innerHTML = text;
+
+    // Attach mobile menu toggle after header loads
+    if (id === "header") {
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("show");
+          navMenu.style.maxHeight = navMenu.classList.contains("show")
+            ? navMenu.scrollHeight + "px"
+            : null;
+        });
+      }
+    }
   } catch (err) {
     console.error(err);
   }
@@ -15,7 +29,7 @@ window.onload = () => {
   loadComponent("footer", "partials/footer.html");
 };
 
-// Sorting functionality (products page)
+// Sorting (products page)
 document.addEventListener("DOMContentLoaded", () => {
   const sortSelect = document.getElementById("sort");
   const productGrid = document.querySelector(".product-grid");
@@ -43,7 +57,7 @@ document.addEventListener("click", (e) => {
     let productPrice = e.target.parentElement.querySelector("p").textContent;
     cart.push({ name: productName, price: productPrice });
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert(productName + " added to cart!");
+    alert(`${productName} added to cart!`);
   }
 });
 
@@ -66,9 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         cartContainer.appendChild(div);
 
-        // FIX: parse correctly, keep ₦
-        let priceNum = parseFloat(item.price.replace(/₦|,/g, ""));
-        total += priceNum;
+        total += parseFloat(item.price.replace(/₦|,/g, ""));
       });
 
       let totalDiv = document.createElement("div");
@@ -79,14 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("main").appendChild(cartContainer);
 
-    // Remove item
-    document.querySelectorAll(".remove").forEach(btn => {
-      btn.addEventListener("click", () => {
-        let index = btn.getAttribute("data-index");
+    // Remove item instantly (no reload)
+    cartContainer.addEventListener("click", (e) => {
+      if (e.target.classList.contains("remove")) {
+        let index = e.target.getAttribute("data-index");
         cart.splice(index, 1);
         localStorage.setItem("cart", JSON.stringify(cart));
-        location.reload();
-      });
+        e.target.parentElement.remove();
+      }
     });
   }
 });
@@ -101,7 +113,7 @@ document.addEventListener("click", (e) => {
     let productPrice = e.target.parentElement.querySelector("p").textContent;
     favorites.push({ name: productName, price: productPrice });
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    alert(productName + " added to favorites!");
+    alert(`${productName} added to favorites!`);
   }
 });
 
@@ -127,14 +139,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("main").appendChild(favContainer);
 
-    // Remove favorite
-    document.querySelectorAll(".remove-fav").forEach(btn => {
-      btn.addEventListener("click", () => {
-        let index = btn.getAttribute("data-index");
+    // Remove favorite instantly
+    favContainer.addEventListener("click", (e) => {
+      if (e.target.classList.contains("remove-fav")) {
+        let index = e.target.getAttribute("data-index");
         favorites.splice(index, 1);
         localStorage.setItem("favorites", JSON.stringify(favorites));
-        location.reload();
-      });
+        e.target.parentElement.remove();
+      }
     });
   }
 });
@@ -146,24 +158,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (searchBtn && searchInput) {
     searchBtn.addEventListener("click", () => {
-      let query = searchInput.value.toLowerCase();
-      localStorage.setItem("searchQuery", query);
-      window.location.href = "products.html";
+      let query = searchInput.value.toLowerCase().trim();
+      if (query) {
+        localStorage.setItem("searchQuery", query);
+        window.location.href = "products.html";
+      } else {
+        alert("Please enter a search term.");
+      }
     });
   }
 
   // Apply search filter on products page
-  if (document.title.includes("Store")) {
+  if (document.body.classList.contains("products-page")) {
     let query = localStorage.getItem("searchQuery");
     if (query) {
       let products = document.querySelectorAll(".product-card");
       products.forEach(product => {
         let name = product.querySelector("h3").textContent.toLowerCase();
-        if (name.includes(query)) {
-          product.style.display = "block";
-        } else {
-          product.style.display = "none";
-        }
+        product.style.display = name.includes(query) ? "block" : "none";
       });
       localStorage.removeItem("searchQuery");
     }
@@ -179,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Checkout page summary
   if (document.title.includes("Checkout")) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let summary = document.getElementById("order-summary");
@@ -192,9 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
         div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
         summary.appendChild(div);
 
-        // FIX: parse correctly
-        let priceNum = parseFloat(item.price.replace(/₦|,/g, ""));
-        total += priceNum;
+        total += parseFloat(item.price.replace(/₦|,/g, ""));
       });
 
       let totalDiv = document.createElement("div");
@@ -215,6 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Confirmation page
   if (document.title.includes("Order Confirmation")) {
     let details = document.getElementById("confirmation-details");
     let order = JSON.parse(localStorage.getItem("lastOrder"));
@@ -230,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
       paymentDiv.innerHTML = `<p>Payment Method: <strong>${order.paymentMethod === "delivery" ? "Pay on Delivery" : "Card Payment (Simulation)"}</strong></p>`;
       details.appendChild(paymentDiv);
 
+      // Clear last order after showing
       localStorage.removeItem("lastOrder");
     } else {
       details.innerHTML = "<p>No order found.</p>";
