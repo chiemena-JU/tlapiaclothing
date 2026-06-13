@@ -331,3 +331,14 @@ label {
   margin: 5px 0;
 }
 
+main h1 {
+  color: green;
+  margin-bottom: 10px;
+}
+
+#confirmation-details {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+}
