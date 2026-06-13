@@ -199,4 +199,13 @@ button:hover {
   background: #333;
 }
 
+.cart-items {
+  padding: 20px;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
 
