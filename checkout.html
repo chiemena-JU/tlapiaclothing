@@ -3,24 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - Tlapia Clothing</title>
+  <title>Tlapia Clothing - Checkout</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <div id="header"></div>
 
- <main>
-  <h1>Checkout</h1>
-  <div id="order-summary"></div>
+  <main>
+    <h1>Checkout</h1>
 
-  <h2>Choose Payment Method</h2>
-  <label><input type="radio" name="payment" value="delivery" checked> Pay on Delivery</label><br>
-  <label><input type="radio" name="payment" value="card"> Card Payment</label><br><br>
+    <!-- Order Summary -->
+    <section id="order-summary">
+      <h2>Your Order</h2>
+      <!-- Cart items will be injected here by script.js -->
+    </section>
 
-  <button id="placeOrderBtn" class="btn">Place Order</button>
-</main>
+    <!-- Payment Options -->
+    <section id="payment-options">
+      <h2>Choose Payment Method</h2>
+      <label>
+        <input type="radio" name="payment" value="delivery" checked>
+        Pay on Delivery
+      </label>
+      <label>
+        <input type="radio" name="payment" value="card">
+        Card Payment (Simulation)
+      </label>
+    </section>
+
+    <!-- Place Order Button -->
+    <button id="placeOrderBtn">Place Order</button>
+  </main>
 
   <div id="footer"></div>
   <script src="assets/js/script.js"></script>
 </body>
 </html>
+
+
