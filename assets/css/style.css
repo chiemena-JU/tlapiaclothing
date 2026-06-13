@@ -316,3 +316,8 @@ footer {
 #checkoutBtn:hover {
   background: darkgreen;
 }
+
+#order-summary h2 {
+  color: green;
+  margin-top: 20px;
+}
