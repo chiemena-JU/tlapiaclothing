@@ -321,3 +321,13 @@ footer {
   color: green;
   margin-top: 20px;
 }
+
+main h2 {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin: 5px 0;
+}
+
