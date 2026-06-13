@@ -4,8 +4,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #0a0a0a; /* deep black background */
-  color: #d9d9d9; /* metallic silver text */
+  background-color: #2c2c2c; /* metallic grey background */
+  color: #e0e0e0; /* light silver text */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -17,14 +17,14 @@ main {
 
 /* Header */
 header {
-  background: #000;
+  background: #1a1a1a;
   color: #c0c0c0;
   padding: 12px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
-  box-shadow: 0 2px 6px rgba(192,192,192,0.3); /* silver glow */
+  box-shadow: 0 2px 6px rgba(255,255,255,0.2);
 }
 
 /* Logo */
@@ -33,7 +33,7 @@ header .logo a {
   font-weight: bold;
   text-decoration: none;
   color: #fff;
-  text-shadow: 0 0 6px rgba(192,192,192,0.6);
+  text-shadow: 0 0 6px rgba(255,255,255,0.5);
 }
 
 /* Search bar inside header */
@@ -48,15 +48,15 @@ header .logo a {
 .search-bar input {
   flex: 1;
   padding: 5px 6px;
-  border: 1px solid #3a4f63; /* steel blue border */
+  border: 1px solid #555;
   border-radius: 4px;
   font-size: 0.85rem;
-  background: #1a1a1a;
-  color: #d9d9d9;
+  background: #3a3a3a;
+  color: #e0e0e0;
 }
 
 .search-bar button {
-  background: #3a4f63;
+  background: #444;
   color: #fff;
   border: none;
   padding: 5px 8px;
@@ -92,7 +92,7 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #d9d9d9;
+  color: #e0e0e0;
   font-weight: 500;
 }
 
@@ -102,8 +102,8 @@ nav ul li a:hover {
 
 /* Footer */
 footer {
-  background: #000;
-  color: #7a7a7a;
+  background: #1a1a1a;
+  color: #aaa;
   text-align: center;
   padding: 20px;
   margin-top: auto;
@@ -115,7 +115,7 @@ footer {
   text-align: center;
   color: #fff;
   padding: 60px 20px;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
 }
 
 .hero h1 {
@@ -127,20 +127,24 @@ footer {
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 20px;
-  color: #7a7a7a;
+  color: #aaa;
 }
 
-.btn {
-  background: linear-gradient(145deg, #3a4f63, #7a7a7a);
+/* Buttons (Shop Now style applied globally) */
+button, .btn {
+  background: linear-gradient(145deg, #555, #888);
   color: #fff;
   padding: 12px 20px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.btn:hover {
-  background: linear-gradient(145deg, #c0c0c0, #3a4f63);
+button:hover, .btn:hover {
+  background: linear-gradient(145deg, #c0c0c0, #555);
   color: #000;
 }
 
@@ -153,25 +157,26 @@ footer {
 }
 
 .product-card {
-  background: #1a1a1a;
-  border: 1px solid #3a4f63;
+  background: #3a3a3a;
+  border: 1px solid #555;
   padding: 20px;
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: #d9d9d9;
+  color: #e0e0e0;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 12px rgba(192,192,192,0.4);
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
 }
 
 .product-card img {
   max-width: 100%;
-  height: auto;
+  height: 250px; /* taller placeholders */
+  object-fit: cover; /* maintain width, crop height */
   margin-bottom: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(192,192,192,0.3);
+  box-shadow: 0 2px 6px rgba(255,255,255,0.2);
 }
 
 .product-card h3 {
@@ -183,21 +188,7 @@ footer {
 .product-card p {
   font-weight: bold;
   margin-bottom: 10px;
-  color: #7a7a7a;
-}
-
-button {
-  background: #3a4f63;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-button:hover {
-  background: #c0c0c0;
-  color: #000;
+  color: #aaa;
 }
 
 /* Cart & checkout */
@@ -209,20 +200,8 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #3a4f63;
+  border-bottom: 1px solid #555;
   padding: 10px 0;
-}
-
-.cart-item button.remove {
-  background: red;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.cart-item button.remove:hover {
-  background: darkred;
 }
 
 .cart-total {
@@ -232,32 +211,17 @@ button:hover {
   color: #c0c0c0;
 }
 
-#checkoutBtn {
-  background: #3a4f63;
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-#checkoutBtn:hover {
-  background: #c0c0c0;
-  color: #000;
-}
-
 #order-summary h2 {
-  color: #3a4f63;
+  color: #888;
   margin-top: 20px;
 }
 
 #confirmation-details {
   margin: 20px 0;
   padding: 15px;
-  border: 1px solid #3a4f63;
-  background: #1a1a1a;
-  color: #d9d9d9;
+  border: 1px solid #555;
+  background: #2c2c2c;
+  color: #e0e0e0;
 }
 
 /* Mobile styles */
@@ -268,7 +232,7 @@ button:hover {
 
   nav {
     display: none;
-    background: #000;
+    background: #1a1a1a;
     position: absolute;
     top: 55px;
     left: 0;
