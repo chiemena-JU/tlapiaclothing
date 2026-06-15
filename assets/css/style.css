@@ -19,9 +19,9 @@ main {
 
 /* Header */
 header {
-  background: #c0c0c0; /* same metallic silver */
+  background: #c0c0c0;
   color: #2c2c2c;
-  padding: 12px 18px;
+  padding: 27px 18px;   /* increase top/bottom padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -163,14 +163,14 @@ button:hover, .btn:hover {
 .product-card {
   background: #e0e0e0;
   border: none;
-  padding: 20px;
+  padding: 10px;              /* reduce padding so image can grow */
   text-align: center;
   transition: transform 0.2s ease;
   color: #2c2c2c;
-  min-height: 400px; /* make product cards longer */
+  min-height: 450px;          /* longer cards */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start; /* let image take space at top */
 }
 
 .product-card:hover {
@@ -178,11 +178,13 @@ button:hover, .btn:hover {
 }
 
 .product-card img {
-  max-width: 100%;
-  height: 300px; /* taller placeholders */
-  object-fit: cover;
+  width: 100%;
+  height: 100%;               /* let image fill available height */
+  max-height: 320px;          /* control maximum height */
+  object-fit: cover;          /* keep proportions */
   margin-bottom: 15px;
   border-radius: 8px;
+  flex-grow: 1;               /* allow image to expand vertically */
 }
 
 .product-card h3 {
@@ -194,6 +196,25 @@ button:hover, .btn:hover {
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+.product-card button {
+  background: linear-gradient(145deg, #555, #888);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;   /* added padding */
+  margin: 6px 0;        /* spacing between buttons */
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  width: 100%;          /* make buttons full width inside card */
+}
+
+.product-card button:hover {
+  background: linear-gradient(145deg, #c0c0c0, #555);
+  color: #000;
+}
+
 
 /* Cart & checkout */
 .cart-items {
