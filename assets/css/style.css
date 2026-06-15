@@ -362,3 +362,65 @@ button:hover, .btn:hover {
   display: inline-block;
   line-height: 1;
 }
+
+/* Home Header */
+.home-header {
+  background: #f0f0f0; /* light gray background */
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Logo */
+.home-header .logo img {
+  height: 60px;
+  width: auto;
+  margin-bottom: 15px;
+}
+
+/* Navigation */
+.home-header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.home-header nav ul li {
+  position: relative;
+}
+
+.home-header nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 160px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 10px 0;
+  border-radius: 4px;
+}
+
+.dropdown-menu li {
+  padding: 8px 16px;
+}
+
+.dropdown-menu li a {
+  color: #333;
+  display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
