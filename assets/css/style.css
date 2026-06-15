@@ -20,7 +20,7 @@ main {
 header {
   background: #1a1a1a;
   color: #c0c0c0;
-  padding: 12px 24px;
+  padding: 24px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
