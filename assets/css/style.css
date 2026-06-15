@@ -161,35 +161,36 @@ button:hover, .btn:hover {
 
 /* Gallery Section */
 .gallery {
+  width: 100%;                  /* span full width */
   text-align: center;
-  padding: 60px 20px;          /* taller vertical spacing */
-  background: #c0c0c0;         /* metallic silver */
+  padding: 80px 0;              /* taller vertical spacing */
+  background: #c0c0c0;          /* metallic silver */
 }
 
 .gallery h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 30px;
   color: #2c2c2c;
 }
 
 .gallery-container {
   overflow: hidden;
-  width: 100%;                 /* full width */
-  margin: 0 auto;
+  width: 100%;                  /* full width */
 }
 
 .gallery-track {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   animation: slideGallery 15s infinite alternate linear;
 }
 
 .gallery-track img {
-  flex: 0 0 calc(33.333% - 20px); /* 3 images visible at a time */
+  flex: 0 0 calc(33.333% - 25px); /* 3 images visible at a time */
   height: 500px;                  /* taller vertically */
   object-fit: cover;
   border-radius: 8px;
 }
+
 
 @keyframes slideGallery {
   from { transform: translateX(0); }
