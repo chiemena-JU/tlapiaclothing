@@ -35,27 +35,53 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Hero Section -->
-    <section class="hero-bg">
-      <!-- Background video -->
-      <video autoplay muted loop>
-        <source src="assets/videos/recording-2026-05-16-180638.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+          {/* HERO */}
+      <section className="hero-bg">
+        <div className="hero-overlay">
+          {/* NAVBAR */}
+          <header className="hero-nav">
+            <div className="nav-left">
+              <span className="brand">Clean. Cared for. Yours.</span>
+            </div>
+            <div className="nav-right">
+              <div className="contact-info">
+                <a href="tel:+16135139893">📞 (613) 513-9893</a> &nbsp;
+                <a href="mailto:decleancleaningservicesottawa@gmail.com">
+                  ✉️ decleancleaningservicesottawa@gmail.com
+                </a>
+              </div>
 
-      <!-- Overlay -->
-      <div class="hero-overlay">
-        <!-- HERO TEXT -->
-        <div class="hero-content">
-          <h1 class="hero-title">Discover fashion that empowers<br>and inspires</h1>
-          <p class="hero-subtitle">Style that speaks confidence,<br>crafted for you</p>
-          <div class="hero-buttons">
-            <a href="products.html" class="btn btn-primary">Shop Now</a>
-            <a href="gallery.html" class="btn btn-outline">View Gallery</a>
+              <div className="nav-divider"></div>
+              <nav className="nav-links">
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/services">Services</NavLink>
+                <NavLink to="/about">About</NavLink>
+                <NavLink to="/faq">FAQ</NavLink>
+                <NavLink to="/contact">Contact</NavLink>
+              </nav>
+            </div>
+          </header>
+
+          {/* HERO TEXT */}
+          <div className="hero-content">
+            <h1 className="hero-title">
+              Premium cleaning for<br />Homes & Rentals
+            </h1>
+            <div className="hero-divider"></div>
+            <p className="hero-subtitle">
+              Reliable, insured cleaners delivering<br />spotless results every time
+            </p>
+            <div className="hero-buttons">
+              <NavLink to="/buy" className="btn btn-primary">
+                GET QUOTE
+              </NavLink>
+              <NavLink to="/sell" className="btn btn-outline">
+                BOOK NOW
+              </NavLink>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     
   <!-- Our Gallery Section -->
   <section class="gallery">
