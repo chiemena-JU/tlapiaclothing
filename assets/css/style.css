@@ -165,49 +165,88 @@ button:hover, .btn:hover {
   color: #000;
 }
 
-/* Hero Section with Video */
+/* Hero Section with Video Background */
 .hero {
-  position: relative;
-  height: 100vh; /* full screen height */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
+position: relative;
+height: 100vh;
+overflow: hidden;
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+text-align: center;
+color: #fff;
 }
 
+/* Video Background */
 .hero video {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  z-index: -1; /* behind text */
+position: absolute;
+top: 0;
+left: 0;
+
+width: 100%;
+height: 100%;
+
+object-fit: cover;
+z-index: 0;
+}
+
+/* Dark Overlay */
+.hero::before {
+content: "";
+position: absolute;
+inset: 0;
+background: rgba(0, 0, 0, 0.45);
+z-index: 1;
+}
+
+/* Keep content above video */
+.hero h1,
+.hero p,
+.hero .btn {
+position: relative;
+z-index: 2;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
+font-size: 4rem;
+margin-bottom: 20px;
+font-weight: 700;
 }
 
 .hero p {
-  font-size: 1.4rem;
-  margin-bottom: 30px;
+font-size: 1.5rem;
+margin-bottom: 30px;
 }
 
 .hero .btn {
-  background: linear-gradient(145deg, #555, #888);
-  color: #fff;
-  padding: 14px 24px;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: background 0.3s ease;
+background: linear-gradient(145deg, #555, #888);
+color: #fff;
+padding: 14px 28px;
+font-weight: bold;
+border-radius: 6px;
+transition: all 0.3s ease;
 }
 
 .hero .btn:hover {
-  background: linear-gradient(145deg, #c0c0c0, #555);
-  color: #000;
+background: linear-gradient(145deg, #c0c0c0, #555);
+color: #000;
+transform: translateY(-2px);
+}
+
+/* Mobile Hero */
+@media (max-width: 700px) {
+.hero h1 {
+font-size: 2.5rem;
+padding: 0 20px;
+}
+
+.hero p {
+font-size: 1.1rem;
+padding: 0 20px;
+}
 }
 
 /* Gallery Section */
