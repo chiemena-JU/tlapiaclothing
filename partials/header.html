@@ -2,30 +2,33 @@
   <div class="logo"><a href="index.html">Tlapia Clothing</a></div>
 
   <!-- Search bar (always visible inside header) -->
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search products...">
-    <button id="searchBtn">Search</button>
+   <div class="search-bar">
+    <input type="text" placeholder="Search products...">
+    <button>Search</button>
   </div>
 
+ 
   <!-- Hamburger icon (mobile only) -->
   <button class="menu-toggle" id="menuToggle">&#9776;</button>
 
-  <!-- Navigation links -->
-  <nav id="navMenu">
-  <ul>
-    <li><a href="products.html">Store</a></li>
-    <li><a href="essentials.html">Essentials</a></li>
-    <li><a href="favorites.html">Favorites</a></li>
-    <li>
-        <a href="cart.html" class="shopping-bag">
-          <span class="cart-icon">🛒</span>
-          <span>Cart</span>
-          <span id="cart-count" class="cart-count">0</span>
-        </a>
-      </li>
+   <!-- Right-side Icons -->
+  <nav class="nav-icons">
+    <a href="store.html" class="nav-link">
+      <span class="icon">🏬</span> Store
+    </a>
+    <a href="essentials.html" class="nav-link">
+      <span class="icon">📦</span> Essentials
+    </a>
+    <a href="favorites.html" class="nav-link favorites">
+      <span class="icon-heart">♡</span> Favorites
+      <span class="counter">0</span>
+    </a>
+    <a href="cart.html" class="shopping-bag">
+      <span class="cart-icon">🛒</span> Cart
+      <span class="cart-count">0</span>
+    </a>
+  </nav>
 
-  </ul>
-</nav>
 
 </header>
 
