@@ -109,40 +109,140 @@ footer {
   margin-top: auto;
 }
 
-/* Hero section */
-.hero {
+/* HERO (full-page with navbar) */
+.hero-bg {
   position: relative;
-  text-align: center;
+  background: url('https://www.thespruce.com/thmb/fBOdyMFmEBHusOiO6Ryep-Ud9I0=/4000x2667/filters:no_upscale()/SPR-how-to-deep-cleaning-house-7152794-Hero-01-e5cd99973ec24e69b00b5ee6b992f760.jpg') 
+              center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Overlay */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* NAVBAR */
+.hero-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   color: #fff;
-  padding: 60px 20px;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  font-size: 0.95rem;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  color: #c0c0c0;
-}
-
-.hero p {
+.nav-left .brand {
+  font-weight: 700;
   font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: #7a7a7a;
+  letter-spacing: 1px;
 }
 
-.btn {
-  background: linear-gradient(145deg, #3a4f63, #7a7a7a);
+.nav-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.contact-info {
+  font-size: 0.95rem;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.4);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
   color: #fff;
-  padding: 12px 20px;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
+  font-weight: 500;
+  transition: transform 0.3s;
 }
 
-.btn:hover {
-  background: linear-gradient(145deg, #c0c0c0, #3a4f63);
-  color: #000;
+.nav-links a:hover {
+  transform: scale(1.1);
 }
+
+/* HERO text */
+.hero-content {
+  text-align: right;
+  color: #fff;
+  max-width: 500px;
+  margin-left: auto;
+  margin-top: auto;
+  padding-bottom: 40px;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  max-width: 500px;
+  color: #fff;
+}
+
+.hero-divider {
+  height: 6px;
+  background: url('https://img.magnific.com/free-vector/wave-gradient-background-desogn_343694-4094.jpg?semt=ais_hybrid&w=740&q=80') 
+              center/cover no-repeat;
+  margin: 15px 0 15px auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.hero-buttons .btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.hero-buttons .btn:hover {
+  transform: scale(1.05);
+}
+
+.hero-buttons .btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.hero-buttons .btn-outline {
+  background: #fff;
+  color: var(--dark);
+}
+
 
 /* Product grid */
 .product-grid {
