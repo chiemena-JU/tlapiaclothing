@@ -162,40 +162,40 @@ button:hover, .btn:hover {
 /* Gallery Section */
 .gallery {
   text-align: center;
-  padding: 40px 20px;
-  background: #c0c0c0;
+  padding: 60px 20px;          /* taller vertical spacing */
+  background: #c0c0c0;         /* metallic silver */
 }
 
 .gallery h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #2c2c2c;
 }
 
 .gallery-container {
   overflow: hidden;
-  width: 100%;
-  max-width: 900px;
+  width: 100%;                 /* full width */
   margin: 0 auto;
 }
 
 .gallery-track {
   display: flex;
-  gap: 15px;
-  animation: slideGallery 12s infinite alternate linear;
+  gap: 20px;
+  animation: slideGallery 15s infinite alternate linear;
 }
 
 .gallery-track img {
-  width: 280px;
-  height: 380px;
+  flex: 0 0 calc(33.333% - 20px); /* 3 images visible at a time */
+  height: 500px;                  /* taller vertically */
   object-fit: cover;
   border-radius: 8px;
 }
 
 @keyframes slideGallery {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-100%); } /* slides through all images */
 }
+
 
 /* Product grid */
 .product-grid {
