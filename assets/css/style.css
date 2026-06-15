@@ -20,34 +20,35 @@ main {
 header {
   background: #1a1a1a;
   color: #c0c0c0;
-  padding: 12px 18px;
+  padding: 12px 24px;              /* more padding */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between;  /* spread items apart */
   box-shadow: 0 2px 6px rgba(255,255,255,0.2);
+  gap: 30px;                       /* extra spacing between logo, search, nav */
 }
 
 /* Logo */
 header .logo img {
-  height: 40px;       /* adjust logo size */
-  width: auto;        /* keep aspect ratio */
+  height: 40px;
+  width: auto;
   display: block;
 }
 
 /* Search bar */
 .search-bar {
   display: flex;
-  gap: 6px;
-  max-width: 150px;
-  margin: 0 10px;
+  gap: 8px;                        /* more space between input and button */
+  max-width: 200px;                /* slightly wider */
+  margin: 0 20px;                  /* space around search bar */
 }
 
 .search-bar input {
   flex: 1;
-  padding: 5px 6px;
+  padding: 6px 8px;
   border: 1px solid #555;
   border-radius: 4px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   background: #3a3a3a;
   color: #e0e0e0;
 }
@@ -56,10 +57,10 @@ header .logo img {
   background: #444;
   color: #fff;
   border: none;
-  padding: 5px 8px;
+  padding: 6px 10px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   transition: background 0.3s ease;
 }
 
@@ -72,7 +73,7 @@ header .logo img {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 30px;                       /* wider spacing between links */
   margin: 0;
   padding: 0;
 }
