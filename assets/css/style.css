@@ -357,7 +357,7 @@ button:hover, .btn:hover {
 }
 
 /* Show only on mobile */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .menu-icon {
     display: block;
     background: linear-gradient(145deg, #333, #666);
