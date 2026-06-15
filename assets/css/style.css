@@ -180,7 +180,7 @@ button:hover, .btn:hover {
 
 .gallery-track {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   animation: slideGallery 15s infinite alternate linear;
 }
 
@@ -188,7 +188,7 @@ button:hover, .btn:hover {
   flex: 0 0 calc(33.333% - 25px); /* 3 images visible at a time */
   height: 500px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 @keyframes slideGallery {
