@@ -184,8 +184,8 @@ button:hover, .btn:hover {
 }
 
 .gallery-track img {
-  flex: 0 0 calc(33.333% - 25px);
-  height: 550px;
+  flex: 0 0 calc(50% - 25px);
+  height: 600px;
   object-fit: cover;
   border-radius: 0px;
 }
