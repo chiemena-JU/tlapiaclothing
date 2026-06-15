@@ -27,11 +27,12 @@ header {
   box-shadow: 0 2px 6px rgba(255,255,255,0.2);
 }
 
-/* Logo */
-header .logo img {
-  height: 40px;       /* adjust logo size */
-  width: auto;        /* keep aspect ratio */
-  display: block;
+header .logo a {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.5);
 }
 
 /* Search bar */
@@ -85,7 +86,8 @@ nav ul li a {
 nav ul li a:hover {
   color: #c0c0c0;
 }
- 
+
+
 /* Footer */
 footer {
   background: #1a1a1a;
