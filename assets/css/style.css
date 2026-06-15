@@ -96,6 +96,24 @@ footer {
   margin-top: auto;
 }
 
+/* Buttons (Shop Now style applied globally) */
+button, .btn {
+  background: linear-gradient(145deg, #555, #888);
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background: linear-gradient(145deg, #c0c0c0, #555);
+  color: #000;
+}
+
 /* Hero Section with Video */
 .hero {
   position: relative;
@@ -240,4 +258,106 @@ footer {
 .product-card button:hover {
   background: linear-gradient(145deg, #c0c0c0, #555);
   color: #000;
+}
+
+/* Cart & checkout */
+.cart-items {
+  padding: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #555;
+  padding: 10px 0;
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c0c0c0;
+}
+
+#order-summary h2 {
+  color: #888;
+  margin-top: 20px;
+}
+
+#confirmation-details {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #555;
+  background: #2c2c2c;
+  color: #e0e0e0;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    background: #1a1a1a;
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  nav.show {
+    display: block;
+    max-height: 300px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .search-bar {
+    max-width: 120px;
+    margin: 0 5px;
+  }
+}
+
+/* Shopping Bag link */
+.shopping-bag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-decoration: none;
+  position: relative;
+}
+
+.shopping-bag .cart-icon {
+  font-size: 1.2rem;
+  color: #c0c0c0;
+}
+
+.shopping-bag:hover {
+  color: #fff;
+}
+
+.shopping-bag:hover .cart-icon {
+  color: #fff;
+}
+
+/* Cart count badge */
+.cart-count {
+  background: #ff4444;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  margin-left: 4px;
 }
