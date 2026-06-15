@@ -341,3 +341,80 @@ button:hover, .btn:hover {
   margin-left: 4px;
 }
 
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: #c0c0c0; /* metallic silver */
+  color: #2c2c2c;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero .btn {
+  background: linear-gradient(145deg, #555, #888);
+  color: #fff;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: linear-gradient(145deg, #c0c0c0, #555);
+  color: #000;
+}
+
+/* Gallery Section */
+.gallery {
+  text-align: center;
+  padding: 40px 20px;
+  background: #c0c0c0; /* metallic silver */
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c2c2c;
+}
+
+.gallery-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 15px;
+  animation: slideGallery 12s infinite alternate linear;
+}
+
+.gallery-track img {
+  width: 280px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Animation for back-and-forth sliding */
+@keyframes slideGallery {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
