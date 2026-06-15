@@ -33,6 +33,8 @@ header .logo a {
   text-decoration: none;
   color: #fff;
   text-shadow: 0 0 6px rgba(255,255,255,0.5);
+  width: 30px;
+  height: 30px;
 }
 
 /* Search bar */
