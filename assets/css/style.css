@@ -13,57 +13,6 @@ html, body {
 
 main {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* center banner vertically */
-}
-
-/* Banner */
-.banner {
-  text-align: center;
-  background: #ccc;
-  padding: 40px;
-  border-radius: 10px;
-}
-
-.banner h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  background: linear-gradient(to right, #ff0000, #0000ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: colorShift 4s infinite alternate;
-}
-
-@keyframes colorShift {
-  0% {
-    background: linear-gradient(to right, #ff0000, #0000ff);
-  }
-  100% {
-    background: linear-gradient(to left, #ff0000, #0000ff);
-  }
-}
-
-.banner p {
-  margin: 20px 0;
-  font-size: 1.2rem;
-}
-
-.banner button {
-  background: linear-gradient(145deg, #555, #888);
-  color: #fff;
-  padding: 12px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.banner button:hover {
-  background: linear-gradient(145deg, #c0c0c0, #555);
-  color: #000;
 }
 
 /* Header */
@@ -160,6 +109,27 @@ footer {
   margin-top: auto;
 }
 
+/* Hero section */
+.hero {
+  position: relative;
+  text-align: center;
+  color: #2c2c2c;
+  padding: 60px 20px;
+  background: #c0c0c0; /* same metallic silver */
+  border: none;
+  box-shadow: none;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
 /* Buttons (Shop Now style applied globally) */
 button, .btn {
   background: linear-gradient(145deg, #555, #888);
@@ -189,14 +159,14 @@ button:hover, .btn:hover {
 .product-card {
   background: #e0e0e0;
   border: none;
-  padding: 10px;
+  padding: 10px;              /* reduce padding so image can grow */
   text-align: center;
   transition: transform 0.2s ease;
   color: #2c2c2c;
-  min-height: 450px;
+  min-height: 450px;          /* longer cards */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start; /* let image take space at top */
 }
 
 .product-card:hover {
@@ -205,12 +175,12 @@ button:hover, .btn:hover {
 
 .product-card img {
   width: 100%;
-  height: 100%;
-  max-height: 320px;
-  object-fit: cover;
+  height: 100%;               /* let image fill available height */
+  max-height: 320px;          /* control maximum height */
+  object-fit: cover;          /* keep proportions */
   margin-bottom: 15px;
   border-radius: 8px;
-  flex-grow: 1;
+  flex-grow: 1;               /* allow image to expand vertically */
 }
 
 .product-card h3 {
@@ -227,19 +197,20 @@ button:hover, .btn:hover {
   background: linear-gradient(145deg, #555, #888);
   color: #fff;
   border: none;
-  padding: 12px 20px;
-  margin: 6px 0;
+  padding: 12px 20px;   /* added padding */
+  margin: 6px 0;        /* spacing between buttons */
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;
   transition: background 0.3s ease;
-  width: 100%;
+  width: 100%;          /* make buttons full width inside card */
 }
 
 .product-card button:hover {
   background: linear-gradient(145deg, #c0c0c0, #555);
   color: #000;
 }
+
 
 /* Cart & checkout */
 .cart-items {
@@ -307,7 +278,6 @@ button:hover, .btn:hover {
     margin: 0 5px;
   }
 }
-
 /* Shopping Bag link */
 .shopping-bag {
   display: flex;
@@ -334,7 +304,7 @@ button:hover, .btn:hover {
 
 /* Cart count badge */
 .cart-count {
-  background: #ff4444;
+  background: #ff4444; /* red badge */
   color: #fff;
   font-size: 0.75rem;
   font-weight: bold;
@@ -342,3 +312,4 @@ button:hover, .btn:hover {
   padding: 2px 6px;
   margin-left: 4px;
 }
+
