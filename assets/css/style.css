@@ -351,18 +351,29 @@ button:hover, .btn:hover {
 }
 
 /* Mobile styles */
+/* Hamburger menu icon */
+.menu-icon {
+  display: none; /* hidden by default on desktop/laptop */
+}
+
+/* Show only on mobile */
 @media (max-width: 768px) {
-  nav {
-    display: none;
-    background: #1a1a1a;
-    position: absolute;
-    top: 55px;
-    left: 0;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+  .menu-icon {
+    display: block;
+    background: linear-gradient(145deg, #333, #666);
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
   }
+
+  .menu-icon span {
+    display: block;
+    height: 2px;
+    background: #fff;
+    margin: 4px 0;
+  }
+}
+
 
   nav.show {
     display: block;
