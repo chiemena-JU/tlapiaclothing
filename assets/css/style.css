@@ -121,12 +121,12 @@ button:hover, .btn:hover {
   position: relative;
   height: 100vh; /* full screen height */
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center;   /* vertical centering */
+  align-items: center;       /* horizontal centering */
   text-align: center;
   color: #fff;
   overflow: hidden;
+  padding: 0 20px;           /* small padding for mobile */
 }
 
 .hero video {
@@ -137,6 +137,7 @@ button:hover, .btn:hover {
   z-index: -1; /* behind text */
 }
 
+/* Hero content block */
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 20px;
@@ -153,13 +154,23 @@ button:hover, .btn:hover {
   padding: 14px 24px;
   font-weight: bold;
   border-radius: 4px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin: 0 10px; /* spacing between buttons */
 }
 
 .hero .btn:hover {
   background: linear-gradient(145deg, #c0c0c0, #555);
   color: #000;
+  transform: scale(1.05);
 }
+
+/* Button container */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
 /* Gallery Section */
 .gallery {
   width: 100%;
