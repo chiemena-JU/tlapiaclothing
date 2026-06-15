@@ -20,34 +20,35 @@ main {
 header {
   background: #1a1a1a;
   color: #c0c0c0;
-  padding: 16px 24px;
+  padding: 20px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px; /* spacing between logo, search, nav */
   box-shadow: 0 2px 6px rgba(255,255,255,0.2);
 }
 
-header .logo img {
-  height: 40px;
-  width: auto;
-  display: block;
+header .logo a {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.5);
 }
 
 /* Search bar */
 .search-bar {
   display: flex;
-  gap: 8px;
-  max-width: 200px;
-  margin: 0 20px;
+  gap: 6px;
+  max-width: 150px;
+  margin: 0 10px;
 }
 
 .search-bar input {
   flex: 1;
-  padding: 6px 8px;
+  padding: 5px 6px;
   border: 1px solid #555;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   background: #3a3a3a;
   color: #e0e0e0;
 }
@@ -56,11 +57,10 @@ header .logo img {
   background: #444;
   color: #fff;
   border: none;
-  padding: 6px 10px;
+  padding: 5px 8px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 0.9rem;
-  transition: background 0.3s ease;
+  font-size: 0.85rem;
 }
 
 .search-bar button:hover {
@@ -72,7 +72,7 @@ header .logo img {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 20px;
   margin: 0;
   padding: 0;
 }
@@ -81,7 +81,6 @@ nav ul li a {
   text-decoration: none;
   color: #e0e0e0;
   font-weight: 500;
-  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
@@ -97,7 +96,7 @@ footer {
   margin-top: auto;
 }
 
-/* Buttons (global) */
+/* Buttons (Shop Now style applied globally) */
 button, .btn {
   background: linear-gradient(145deg, #555, #888);
   color: #fff;
@@ -107,22 +106,22 @@ button, .btn {
   border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 button:hover, .btn:hover {
   background: linear-gradient(145deg, #c0c0c0, #555);
   color: #000;
-  transform: scale(1.05);
 }
 
 /* Hero Section with Video */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 100vh; /* full screen height */
   display: flex;
-  justify-content: center;   /* vertical centering */
-  align-items: center;       /* horizontal centering */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: #fff;
   overflow: hidden;
@@ -133,22 +132,7 @@ button:hover, .btn:hover {
   top: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  z-index: -1;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4); /* dark tint for readability */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-content {
-  max-width: 800px;
-  padding: 20px;
+  z-index: -1; /* behind text */
 }
 
 .hero h1 {
@@ -161,17 +145,25 @@ button:hover, .btn:hover {
   margin-bottom: 30px;
 }
 
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.hero .btn {
+  background: linear-gradient(145deg, #555, #888);
+  color: #fff;
+  padding: 14px 24px;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: linear-gradient(145deg, #c0c0c0, #555);
+  color: #000;
 }
 
 /* Gallery Section */
 .gallery {
-  width: 100%;
+  width: 100%;                  /* span full width */
   text-align: center;
-  padding: 80px 0;
+  padding: 80px 0;              /* taller vertical spacing */
   background: #c0c0c0;
 }
 
@@ -188,14 +180,15 @@ button:hover, .btn:hover {
 
 .gallery-track {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   animation: slideGallery 15s infinite alternate linear;
 }
 
 .gallery-track img {
-  flex: 0 0 calc(40% - 25px);
-  height: 600px;
+  flex: 0 0 calc(33.333% - 25px); /* 3 images visible at a time */
+  height: 500px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 @keyframes slideGallery {
@@ -213,6 +206,7 @@ button:hover, .btn:hover {
 
 .product-card {
   background: #e0e0e0;
+  border: none;
   padding: 10px;
   text-align: center;
   transition: transform 0.2s ease;
@@ -220,6 +214,7 @@ button:hover, .btn:hover {
   min-height: 450px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .product-card:hover {
@@ -232,6 +227,7 @@ button:hover, .btn:hover {
   object-fit: cover;
   margin-bottom: 15px;
   border-radius: 8px;
+  flex-grow: 1;
   background: #aaa url('assets/images/placeholder.png') center/cover no-repeat;
 }
 
@@ -246,8 +242,21 @@ button:hover, .btn:hover {
 }
 
 .product-card button {
-  margin-top: auto;
+  background: linear-gradient(145deg, #555, #888);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  margin: 6px 0;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
   width: 100%;
+}
+
+.product-card button:hover {
+  background: linear-gradient(145deg, #c0c0c0, #555);
+  color: #000;
 }
 
 /* Cart & checkout */
@@ -311,19 +320,6 @@ button:hover, .btn:hover {
     max-width: 120px;
     margin: 0 5px;
   }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-  }
 }
 
 /* Shopping Bag link */
@@ -352,75 +348,15 @@ button:hover, .btn:hover {
 
 /* Cart count badge */
 .cart-count {
-  background: #ff4444;
-  color: #fff;
+  background: #ff4444;          /* bright red badge */
+  color: #fff;                  /* white text */
   font-size: 0.75rem;
   font-weight: bold;
   border-radius: 50%;
   padding: 2px 6px;
   margin-left: 4px;
-  display: inline-block;
-  line-height: 1;
+  display: inline-block;        /* ensures consistent shape */
+  line-height: 1;               /* keeps text centered */
 }
 
-/* Home Header */
-.home-header {
-  background: #f0f0f0; /* light gray background */
-  text-align: center;
-  padding: 20px 0;
-}
-
-/* Logo */
-.home-header .logo img {
-  height: 60px;
-  width: auto;
-  margin-bottom: 15px;
-}
-
-/* Navigation */
-.home-header nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 0;
-  padding: 0;
-}
-
-.home-header nav ul li {
-  position: relative;
-}
-
-.home-header nav ul li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-/* Dropdown */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  min-width: 160px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  padding: 10px 0;
-  border-radius: 4px;
-}
-
-.dropdown-menu li {
-  padding: 8px 16px;
-}
-
-.dropdown-menu li a {
-  color: #333;
-  display: block;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
 
