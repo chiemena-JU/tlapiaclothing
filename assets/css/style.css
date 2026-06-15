@@ -236,7 +236,7 @@ button:hover, .btn:hover {
 }
 
 .gallery-track img {
-  flex: 0 0 calc(40% - 20px);
+  flex: 0 0 calc(35% - 20px);
   height: 600px;
   object-fit: cover;
 }
