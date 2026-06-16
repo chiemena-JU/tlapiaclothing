@@ -545,3 +545,15 @@ header {
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
 }
 
+/* Mobile adjustments */
+@media (max-width: 700px) {
+  .hero-title-image {
+    max-width: 85%;   /* make logo larger on mobile */
+    margin: 0 auto 15px auto; /* keep spacing neat */
+  }
+
+  .hero .btn {
+    padding: 16px 28px;  /* slightly smaller button for balance */
+    font-size: 1rem;
+  }
+}
