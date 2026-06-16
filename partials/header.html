@@ -1,46 +1,25 @@
 <header>
-
   <div class="logo">
     <a href="index.html">Tlapia Clothing</a>
   </div>
 
   <div class="search-bar">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search products..."
-    >
-    <button id="searchBtn">
-      Search
-    </button>
+    <input id="searchInput" type="text" placeholder="Search products...">
+    <button id="searchBtn">Search</button>
   </div>
 
-  <button class="menu-toggle" id="menuToggle">
-    &#9776;
-  </button>
+  <button class="menu-toggle" id="menuToggle">&#9776;</button>
 
-  <nav class="nav-icons" id="navMenu">
-
-    <a href="products.html" class="nav-link">
-      Store
+  <nav id="navMenu" class="nav-icons">
+    <a href="products.html" class="nav-link">Store</a>
+    <a href="essentials.html" class="nav-link">Essentials</a>
+    <a href="favorites.html" class="nav-link favorites">
+      <span class="icon-heart">♡</span> Favorites
+      <span id="favorites-count" class="counter">0</span>
     </a>
-
-    <a href="essentials.html" class="nav-link">
-      Essentials
-    </a>
-
-   <a href="favorites.html" class="nav-link favorites">
-  <span class="icon-heart">♡</span>
-  Favorites
-  <span class="counter" id="favorites-count">0</span>
-    </a>
-
     <a href="cart.html" class="shopping-bag">
-      <span class="cart-icon">🛒</span>
-      Cart
-      <span class="cart-count" id="cart-count">0</span>
+      <span class="cart-icon">🛒</span> Cart
+      <span id="cart-count" class="cart-count">0</span>
     </a>
-
   </nav>
-
 </header>
