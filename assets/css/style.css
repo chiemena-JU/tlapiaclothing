@@ -238,8 +238,8 @@ button:hover, .btn:hover {
 .gallery {
   width: 100%;
   text-align: center;
-  padding: 60px 0;
-  background: #f5f5dc; /* beige background */
+  padding: 60px 40px;   /* add left/right padding for gaps */
+  background: #f5f5dc;  /* beige background */
   position: relative;
 }
 
@@ -256,7 +256,7 @@ button:hover, .btn:hover {
 
 .gallery-track {
   display: flex;
-  gap: 20px;
+  gap: 20px;            /* space between images */
   animation: slideGallery 25s linear infinite;
 }
 
@@ -276,16 +276,13 @@ button:hover, .btn:hover {
   }
 }
 
-/* Remove navigation buttons */
-.gallery-button {
-  display: none;
-}
-
-/* Seamless auto sliding animation */
+/* Auto sliding animation */
 @keyframes slideGallery {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+
 
 /* Product grid */
 .product-grid {
