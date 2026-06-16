@@ -504,3 +504,8 @@ padding: 0 20px;
 header {
   position: relative;
 }
+
+/* Reviews collapse to 1 per row on mobile */
+.elfsight-app-3a7f5102-08ec-4999-9a40-7dc89113f754 .eapps-google-reviews-reviews {
+  grid-template-columns: 1fr;
+}
