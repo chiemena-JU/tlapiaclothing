@@ -96,11 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.target.classList.contains("remove")) {
         let index = e.target.getAttribute("data-index");
         cart.splice(index, 1);
-          localStorage.setItem("cart", JSON.stringify(cart));
-          
-          updateCartCount();
-          
-          e.target.parentElement.remove();
+        localStorage.setItem("cart", JSON.stringify(cart));
+        e.target.parentElement.remove();
       }
     });
   }
@@ -147,15 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.target.classList.contains("remove-fav")) {
         let index = e.target.getAttribute("data-index");
         favorites.splice(index, 1);
-
-            localStorage.setItem(
-              "favorites",
-              JSON.stringify(favorites)
-            );
-            
-            updateFavoritesCount();
-            
-            e.target.parentElement.remove();
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        e.target.parentElement.remove();
       }
     });
   }
@@ -278,21 +268,3 @@ document.addEventListener("click", (e) => {
     setTimeout(updateCartCount, 100); // slight delay to refresh count
   }
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartCount();
-  updateFavoritesCount();
-});
-
-favorites.push({ name: productName, price: productPrice });
-
-localStorage.setItem(
-  "favorites",
-  JSON.stringify(favorites)
-);
-
-updateFavoritesCount();
-
-alert(`${productName} added to favorites!`);
-
-is this correct?
