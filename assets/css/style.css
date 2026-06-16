@@ -524,7 +524,7 @@ header {
 /* Mobile adjustments */
 @media (max-width: 700px) {
   .hero-title-image {
-    max-width: 85%;   /* make logo larger on mobile */
+    max-width: 90%;   /* make logo larger on mobile */
     margin: 0 auto 15px auto; /* keep spacing neat */
   }
 
