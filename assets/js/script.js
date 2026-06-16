@@ -268,3 +268,25 @@ document.addEventListener("click", (e) => {
     setTimeout(updateCartCount, 100); // slight delay to refresh count
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".gallery-track");
+  const prevBtn = document.querySelector(".gallery-button.prev");
+  const nextBtn = document.querySelector(".gallery-button.next");
+
+  let position = 0;
+  const step = 300; // pixels to move per click
+
+  if (prevBtn && nextBtn && track) {
+    prevBtn.addEventListener("click", () => {
+      position += step;
+      track.style.transform = `translateX(${position}px)`;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      position -= step;
+      track.style.transform = `translateX(${position}px)`;
+    });
+  }
+});
+
