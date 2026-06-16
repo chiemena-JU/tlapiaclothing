@@ -308,7 +308,7 @@ button:hover, .btn:hover {
 /* Default (desktop/laptop) */
 .gallery-track img {
   flex: 0 0 calc(25% - 20px); /* smaller width */
-  height: 600px;              /* reduce height too */
+  height: 500px;              /* reduce height too */
   object-fit: cover;
   border-radius: 6px;
 }
@@ -317,7 +317,7 @@ button:hover, .btn:hover {
 @media (max-width: 700px) {
   .gallery-track img {
     flex: 0 0 calc(70% - 20px); /* narrower on mobile */
-    height: 220px;              /* smaller height */
+    height: 320px;              /* smaller height */
   }
 }
 
@@ -571,9 +571,6 @@ header {
   filter: brightness(1.4) contrast(1.3) saturate(1.2);
   transition: all 0.3s ease;
 
-  /* Pulse animation */
-  animation: pulseGlow 3s infinite ease-in-out;
-}
 
 /* Hover effect for extra pop */
 .hero-title-image:hover {
@@ -582,18 +579,4 @@ header {
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
 }
 
-/* Keyframes for pulsing glow */
-@keyframes pulseGlow {
-  0% {
-    filter: brightness(1.3) contrast(1.2) saturate(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    filter: brightness(1.6) contrast(1.4) saturate(1.3);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-  }
-  100% {
-    filter: brightness(1.3) contrast(1.2) saturate(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-}
+
