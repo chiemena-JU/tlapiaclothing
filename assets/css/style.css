@@ -238,9 +238,10 @@ button:hover, .btn:hover {
 .gallery {
   width: 100%;
   text-align: center;
-  padding: 60px 40px;   /* add left/right padding for gaps */
-  background: #f5f5dc;  /* beige background */
+  padding: 60px 40px;   /* top/bottom + left/right padding */
+  background: #f5f5dc;
   position: relative;
+  box-sizing: border-box; /* ensures padding is inside width */
 }
 
 .gallery h2 {
@@ -256,16 +257,18 @@ button:hover, .btn:hover {
 
 .gallery-track {
   display: flex;
-  gap: 20px;            /* space between images */
+  gap: 20px;            /* spacing between images */
   animation: slideGallery 25s linear infinite;
+  padding: 0 20px;      /* extra breathing room inside track */
 }
 
 /* Desktop/Laptop */
 .gallery-track img {
-  flex: 0 0 calc(25% - 20px); /* 4 images per row */
+  flex: 0 0 calc(25% - 20px);
   height: 400px;
   object-fit: cover;
   border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* subtle shadow for depth */
 }
 
 /* Mobile adjustments */
@@ -281,6 +284,7 @@ button:hover, .btn:hover {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
 
 
 
