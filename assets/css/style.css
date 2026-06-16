@@ -277,7 +277,7 @@ padding: 0 20px;
 
 /* Default (desktop/laptop) */
 .gallery-track img {
-  flex: 0 0 calc(35% - 20px);
+  flex: 0 0 calc(35% - 25px);
   height: 650px;
   object-fit: cover;
   border-radius: 6px;
