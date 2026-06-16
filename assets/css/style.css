@@ -521,16 +521,18 @@ header {
 .reviews-section::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4); /* optional overlay */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
   z-index: 1;
 }
 
 .reviews-section h2,
 .reviews-section .elfsight-app-3a7f5102-08ec-4999-9a40-7dc89113f754 {
   position: relative;
-  z-index: 2; /* ensures reviews sit above overlay */
+  z-index: 2;
 }
 
 .hero-title-image {
