@@ -253,8 +253,9 @@ padding: 0 20px;
 .gallery {
   width: 100%;
   text-align: center;
-  padding: 80px 0;
+  padding: 60px 0;
   background: #c0c0c0;
+  position: relative; /* allows nav buttons to be positioned */
 }
 
 .gallery h2 {
@@ -271,13 +272,51 @@ padding: 0 20px;
 .gallery-track {
   display: flex;
   gap: 20px;
-  animation: slideGallery 15s infinite alternate linear;
+  transition: transform 0.5s ease; /* smoother sliding */
 }
 
+/* Default (desktop/laptop) */
 .gallery-track img {
   flex: 0 0 calc(35% - 20px);
-  height: 600px;
+  height: 500px;
   object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .gallery-track img {
+    flex: 0 0 calc(80% - 20px); /* fewer images visible */
+    height: 250px;              /* smaller height */
+  }
+}
+
+/* Navigation buttons */
+.gallery-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.gallery-button:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.gallery-button.prev {
+  left: 10px;
+}
+
+.gallery-button.next {
+  right: 10px;
 }
 
 @keyframes slideGallery {
@@ -330,7 +369,14 @@ padding: 0 20px;
 .product-card button {
   margin-top: auto;
   width: 100%;
+  margin-bottom: 10px; /* adds space below each button */
 }
+
+/* Optional: only add space between buttons, not below the last one */
+.product-card button + button {
+  margin-top: 8px; /* space between consecutive buttons */
+}
+
 
 /* Cart & checkout */
 .cart-items {
