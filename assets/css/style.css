@@ -565,7 +565,7 @@ header {
   max-width: 55%; /* balanced size */
   height: auto;
   display: block;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 5px auto;
 
   /* Base visual boost */
   filter: brightness(1.4) contrast(1.3) saturate(1.2);
