@@ -201,10 +201,11 @@ button:hover, .btn:hover {
   padding: 20px 40px;       /* bigger size */
   font-weight: 800;
   font-size: 1.2rem;
-  border-radius: 8px;
+  border-radius: 3px;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  margin-top: 2px;
 }
 
 .hero .btn:hover {
@@ -526,10 +527,10 @@ header {
 }
 
 .hero-title-image {
-  max-width: 65%; /* balanced size */
+  max-width: 60%; /* balanced size */
   height: auto;
   display: block;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 3px auto;
 
   /* Base visual boost */
   filter: brightness(1.4) contrast(1.3) saturate(1.2);
