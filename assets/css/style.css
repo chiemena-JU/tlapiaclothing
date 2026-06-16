@@ -205,9 +205,10 @@ z-index: 1;
 /* Keep content above video */
 .hero h1,
 .hero p,
-.hero .btn {
-position: relative;
-z-index: 2;
+.hero .btn,
+.hero-title-image {
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
