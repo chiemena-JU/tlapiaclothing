@@ -239,14 +239,14 @@ button:hover, .btn:hover {
   width: 100%;
   text-align: center;
   padding: 60px 0;
-  background: #c0c0c0;
-  position: relative; /* allows nav buttons to be positioned */
+  background: #f5f5dc; /* beige background */
+  position: relative;
 }
 
 .gallery h2 {
   font-size: 2.2rem;
   margin-bottom: 30px;
-  color: #2c2c2c;
+  color: #000;
 }
 
 .gallery-container {
@@ -257,13 +257,13 @@ button:hover, .btn:hover {
 .gallery-track {
   display: flex;
   gap: 20px;
-  transition: transform 0.5s ease; /* smoother sliding */
+  animation: slideGallery 25s linear infinite;
 }
 
-/* Default (desktop/laptop) */
+/* Desktop/Laptop */
 .gallery-track img {
-  flex: 0 0 calc(20% - 20px); /* smaller width */
-  height: 550px;              /* reduce height too */
+  flex: 0 0 calc(25% - 20px); /* 4 images per row */
+  height: 400px;
   object-fit: cover;
   border-radius: 6px;
 }
@@ -271,45 +271,20 @@ button:hover, .btn:hover {
 /* Mobile adjustments */
 @media (max-width: 700px) {
   .gallery-track img {
-    flex: 0 0 calc(60% - 20px); /* narrower on mobile */
-    height: 300px;              /* smaller height */
+    flex: 0 0 calc(80% - 20px);
+    height: 250px;
   }
 }
 
-/* Navigation buttons */
+/* Remove navigation buttons */
 .gallery-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: linear-gradient(145deg, #fcfcfc, #e8e7e3); /* bright gold/orange */
-  color: #000;
-  border: none;
-  padding: 12px 16px;
-  cursor: pointer;
-  font-size: 1.4rem;
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 200, 0, 0.7); /* glowing highlight */
-  transition: all 0.3s ease;
-  z-index: 10;
+  display: none;
 }
 
-.gallery-button:hover {
-  background: linear-gradient(145deg, #fcfcfc, #e8e7e3);
-  box-shadow: 0 0 15px rgba(255, 200, 0, 1);
-}
-
-.gallery-button.prev {
-  left: 15px;
-}
-
-.gallery-button.next {
-  right: 15px;
-}
-
-
+/* Seamless auto sliding animation */
 @keyframes slideGallery {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Product grid */
