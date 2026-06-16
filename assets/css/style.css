@@ -308,7 +308,7 @@ button:hover, .btn:hover {
 /* Default (desktop/laptop) */
 .gallery-track img {
   flex: 0 0 calc(25% - 20px); /* smaller width */
-  height: 550px;              /* reduce height too */
+  height: 600px;              /* reduce height too */
   object-fit: cover;
   border-radius: 6px;
 }
