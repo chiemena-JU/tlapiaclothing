@@ -217,9 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let summary = document.getElementById("order-summary");
 
-    if (cart.length === 0) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
       summary.innerHTML = "<p>Your cart is empty.</p>";
-    } else {
+      } else {
       let total = 0;
       cart.forEach(item => {
         let div = document.createElement("div");
@@ -242,6 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("lastOrder", JSON.stringify({ cart, paymentMethod }));
         localStorage.removeItem("cart");
+        updateCartCount();
         window.location.href = "confirmation.html";
       });
     }
@@ -280,15 +283,6 @@ function updateCartCount() {
   }
 }
 
-// Run on page load
-document.addEventListener("DOMContentLoaded", updateCartCount);
-
-// Also update whenever an item is added to cart
-document.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Add to Cart")) {
-    setTimeout(updateCartCount, 100); // slight delay to refresh count
-  }
-});
 
 function updateFavoritesCount() {
   const favoritesCountEl = document.getElementById("favorites-count");
