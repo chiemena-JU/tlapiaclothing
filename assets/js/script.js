@@ -299,8 +299,3 @@ function updateFavoritesCount() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartCount();
-  updateFavoritesCount();
-});
-
