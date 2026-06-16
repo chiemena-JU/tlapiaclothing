@@ -7,21 +7,16 @@ async function loadComponent(id, file) {
     document.getElementById(id).innerHTML = text;
 
     // Attach mobile menu toggle after header loads
-        if (id === "header") {
-        const menuToggle = document.getElementById("menuToggle");
-        const navMenu = document.getElementById("navMenu");
-      
-        if (menuToggle && navMenu) {
-          menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("show");
-            navMenu.style.maxHeight = navMenu.classList.contains("show")
-              ? navMenu.scrollHeight + "px"
-              : null;
-          });
-        }
-      
-        updateCartCount();
-        updateFavoritesCount();
+    if (id === "header") {
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("show");
+          navMenu.style.maxHeight = navMenu.classList.contains("show")
+            ? navMenu.scrollHeight + "px"
+            : null;
+        });
       }
     }
   } catch (err) {
@@ -61,11 +56,8 @@ document.addEventListener("click", (e) => {
     let productName = e.target.parentElement.querySelector("h3").textContent;
     let productPrice = e.target.parentElement.querySelector("p").textContent;
     cart.push({ name: productName, price: productPrice });
-localStorage.setItem("cart", JSON.stringify(cart));
-
-updateCartCount();
-
-alert(`${productName} added to cart!`);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${productName} added to cart!`);
   }
 });
 
@@ -123,11 +115,8 @@ document.addEventListener("click", (e) => {
     let productName = e.target.parentElement.querySelector("h3").textContent;
     let productPrice = e.target.parentElement.querySelector("p").textContent;
     favorites.push({ name: productName, price: productPrice });
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-      
-      updateFavoritesCount();
-      
-      alert(`${productName} added to favorites!`);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert(`${productName} added to favorites!`);
   }
 });
 
@@ -217,11 +206,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let summary = document.getElementById("order-summary");
 
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-      if (cart.length === 0) {
+    if (cart.length === 0) {
       summary.innerHTML = "<p>Your cart is empty.</p>";
-      } else {
+    } else {
       let total = 0;
       cart.forEach(item => {
         let div = document.createElement("div");
@@ -244,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("lastOrder", JSON.stringify({ cart, paymentMethod }));
         localStorage.removeItem("cart");
-        updateCartCount();
         window.location.href = "confirmation.html";
       });
     }
@@ -283,35 +269,30 @@ function updateCartCount() {
   }
 }
 
+// Run on page load
+document.addEventListener("DOMContentLoaded", updateCartCount);
 
-function updateFavoritesCount() {
-  const favoritesCountEl = document.getElementById("favorites-count");
-
-  if (favoritesCountEl) {
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favoritesCountEl.textContent = favorites.length;
-  }
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".gallery-track");
-  const prevBtn = document.querySelector(".gallery-button.prev");
-  const nextBtn = document.querySelector(".gallery-button.next");
-
-  let position = 0;
-  const step = 300; // pixels to move per click
-
-  if (prevBtn && nextBtn && track) {
-    prevBtn.addEventListener("click", () => {
-      position += step;
-      track.style.transform = `translateX(${position}px)`;
-    });
-
-    nextBtn.addEventListener("click", () => {
-      position -= step;
-      track.style.transform = `translateX(${position}px)`;
-    });
+// Also update whenever an item is added to cart
+document.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Add to Cart")) {
+    setTimeout(updateCartCount, 100); // slight delay to refresh count
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+  updateFavoritesCount();
+});
+
+favorites.push({ name: productName, price: productPrice });
+
+localStorage.setItem(
+  "favorites",
+  JSON.stringify(favorites)
+);
+
+updateFavoritesCount();
+
+alert(`${productName} added to favorites!`);
+
+is this correct?
