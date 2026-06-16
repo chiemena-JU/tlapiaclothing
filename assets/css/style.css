@@ -167,39 +167,39 @@ button:hover, .btn:hover {
 
 /* Hero Section with Video Background */
 .hero {
-position: relative;
-height: 100vh;
-overflow: hidden;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  justify-content: center;  /* center vertically */
+  align-items: center;      /* center horizontally */
 
-text-align: center;
-color: #fff;
+  text-align: center;
+  color: #fff;
 }
 
 /* Video Background */
 .hero video {
-position: absolute;
-top: 0;
-left: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
 
-object-fit: cover;
-z-index: 0;
+  object-fit: cover;
+  z-index: 0;
 }
 
 /* Dark Overlay */
 .hero::before {
-content: "";
-position: absolute;
-inset: 0;
-background: rgba(0, 0, 0, 0.45);
-z-index: 1;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
 }
 
 /* Keep content above video */
@@ -211,49 +211,83 @@ z-index: 1;
   z-index: 2;
 }
 
+/* Logo image */
+.hero-title-image {
+  max-width: 65%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto; /* space below logo */
+  filter: brightness(1.4) contrast(1.3) saturate(1.2);
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Hero heading */
 .hero h1 {
-font-size: 4rem;
-margin-bottom: 20px;
-font-weight: 700;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
+/* Hero tagline */
 .hero p {
-font-size: 1.5rem;
-margin-bottom: 30px;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
 }
 
+/* Hero button */
 .hero .btn {
-  background: linear-gradient(145deg, #666, #aaa); /* lighter gradient for brightness */
+  background: linear-gradient(145deg, #666, #aaa);
   color: #fff;
-  padding: 18px 34px;       /* bigger size */
-  font-weight: 800;         /* bolder text */
-  font-size: 1.1rem;        /* slightly larger font */
-  border-radius: 6px;       /* smoother corners */
-  letter-spacing: 0.5px;    /* spacing for boldness */
+  padding: 20px 40px;       /* bigger size */
+  font-weight: 800;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* subtle glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
 .hero .btn:hover {
   background: linear-gradient(145deg, #c0c0c0, #555);
   color: #000;
-  transform: scale(1.05);   /* hover enlargement */
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* brighter glow */
-  transform: translateY(-2px);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+/* Pulse animation for logo */
+@keyframes pulseGlow {
+  0% {
+    filter: brightness(1.3) contrast(1.2) saturate(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    filter: brightness(1.6) contrast(1.4) saturate(1.3);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    filter: brightness(1.3) contrast(1.2) saturate(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
 }
 
 /* Mobile Hero */
 @media (max-width: 700px) {
-.hero h1 {
-font-size: 2.5rem;
-padding: 0 20px;
+  .hero h1 {
+    font-size: 2.5rem;
+    padding: 0 20px;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    padding: 0 20px;
+  }
+
+  .hero .btn {
+    padding: 16px 28px;
+    font-size: 1rem;
+  }
 }
 
-.hero p {
-font-size: 1.1rem;
-padding: 0 20px;
-}
-}
 
 /* Gallery Section */
 .gallery {
