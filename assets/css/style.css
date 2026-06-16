@@ -533,3 +533,15 @@ header {
     font-size: 1rem;
   }
 }
+
+/* Gallery Heading */
+.gallery h2 {
+  font-family: 'Montserrat', sans-serif; /* same modern font */
+  font-size: 2.5rem;                      /* large size */
+  font-weight: 700;                       /* bold */
+  text-transform: uppercase;              /* all caps */
+  letter-spacing: 2px;                    /* spaced letters */
+  color: #000;                            /* solid black */
+  margin-bottom: 30px;
+}
+
