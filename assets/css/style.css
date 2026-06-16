@@ -223,18 +223,23 @@ margin-bottom: 30px;
 }
 
 .hero .btn {
-background: linear-gradient(145deg, #555, #888);
-color: #fff;
-padding: 14px 28px;
-font-weight: bold;
-border-radius: 6px;
-transition: all 0.3s ease;
+  background: linear-gradient(145deg, #666, #aaa); /* lighter gradient for brightness */
+  color: #fff;
+  padding: 18px 34px;       /* bigger size */
+  font-weight: 800;         /* bolder text */
+  font-size: 1.1rem;        /* slightly larger font */
+  border-radius: 6px;       /* smoother corners */
+  letter-spacing: 0.5px;    /* spacing for boldness */
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* subtle glow */
 }
 
 .hero .btn:hover {
-background: linear-gradient(145deg, #c0c0c0, #555);
-color: #000;
-transform: translateY(-2px);
+  background: linear-gradient(145deg, #c0c0c0, #555);
+  color: #000;
+  transform: scale(1.05);   /* hover enlargement */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* brighter glow */
+  transform: translateY(-2px);
 }
 
 /* Mobile Hero */
