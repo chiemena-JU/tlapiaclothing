@@ -532,3 +532,9 @@ header {
   z-index: 2; /* ensures reviews sit above overlay */
 }
 
+.hero-title-image {
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto;
+}
