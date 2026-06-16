@@ -34,36 +34,6 @@ header .logo img {
   display: block;
 }
 
-/* Search bar (centered like Jumia) */
-.search-bar {
-  flex: 1;
-  display: flex;
-  margin: 0 20px;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #555;
-  border-radius: 4px 0 0 4px;
-  background: #3a3a3a;
-  color: #fff;
-}
-
-.search-bar button {
-  background: #c0c0c0;
-  color: #000;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.search-bar button:hover {
-  background: #888;
-  color: #fff;
-}
 
 /* Right-side nav icons */
 .nav-icons {
@@ -242,22 +212,6 @@ button:hover, .btn:hover {
   color: #000;
   transform: scale(1.05) translateY(-2px);
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-}
-
-/* Pulse animation for logo */
-@keyframes pulseGlow {
-  0% {
-    filter: brightness(1.3) contrast(1.2) saturate(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    filter: brightness(1.6) contrast(1.4) saturate(1.3);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-  }
-  100% {
-    filter: brightness(1.3) contrast(1.2) saturate(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
 }
 
 /* Mobile Hero */
@@ -473,6 +427,19 @@ button:hover, .btn:hover {
   display: none;
 }
 
+/* Header should stay above page content */
+header {
+  position: relative;
+  z-index: 1000;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 /* Mobile styles */
 @media (max-width: 700px) {
 
@@ -486,37 +453,34 @@ button:hover, .btn:hover {
     padding: 8px 12px;
     cursor: pointer;
     font-size: 1.4rem;
+    position: relative;
+    z-index: 1002;
   }
-
-  /* Mobile navigation */
-  nav.show {
-    display: block;
-    max-height: 300px;
-  }
-
-  .nav-icons {
-  flex-direction: column;
-  padding: 10px;
-}
 
   .search-bar {
     max-width: 120px;
     margin: 0 5px;
   }
-}
 
-@media (max-width: 700px) {
-
+  /* Mobile navigation menu */
   .nav-icons {
     display: none;
+
     position: absolute;
-    top: 80px;
+    top: 100%;
     right: 10px;
+
     background: #1a1a1a;
     flex-direction: column;
     padding: 15px;
     border-radius: 8px;
     gap: 15px;
+
+    min-width: 180px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+
+    z-index: 1001; /* ABOVE hero video */
   }
 
   .nav-icons.show {
@@ -524,15 +488,15 @@ button:hover, .btn:hover {
   }
 }
 
-.logo a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5rem;
+.logo a { 
+  color: #fff; 
+  text-decoration: none; 
+  font-size: 1.5rem; 
   font-weight: bold;
-}
+} 
 
-header {
-  position: relative;
+header { 
+  position: relative; 
 }
 
 /* Reviews collapse to 1 per row on mobile */
@@ -562,21 +526,40 @@ header {
 }
 
 .hero-title-image {
-  max-width: 55%; /* balanced size */
+  max-width: 65%; /* balanced size */
   height: auto;
   display: block;
-  margin: 0 auto 5px auto;
+  margin: 0 auto 10px auto;
 
   /* Base visual boost */
   filter: brightness(1.4) contrast(1.3) saturate(1.2);
   transition: all 0.3s ease;
 
+  /* Pulse animation */
+  animation: pulseGlow 3s infinite ease-in-out;
+}
 
 /* Hover effect for extra pop */
 .hero-title-image:hover {
   filter: brightness(1.6) contrast(1.4) saturate(1.3);
   transform: scale(1.03);
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+/* Keyframes for pulsing glow */
+@keyframes pulseGlow {
+  0% {
+    filter: brightness(1.3) contrast(1.2) saturate(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    filter: brightness(1.6) contrast(1.4) saturate(1.3);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    filter: brightness(1.3) contrast(1.2) saturate(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
 }
 
 
