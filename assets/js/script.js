@@ -290,3 +290,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function updateFavoritesCount() {
+  const favoritesCountEl = document.getElementById("favorites-count");
+  if (favoritesCountEl) {
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favoritesCountEl.textContent = favorites.length;
+  }
+}
+
+
