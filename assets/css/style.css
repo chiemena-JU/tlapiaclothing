@@ -278,17 +278,17 @@ padding: 0 20px;
 
 /* Default (desktop/laptop) */
 .gallery-track img {
-  flex: 0 0 calc(35% - 25px);
-  height: 650px;
+  flex: 0 0 calc(25% - 20px); /* smaller width */
+  height: 500px;              /* reduce height too */
   object-fit: cover;
   border-radius: 6px;
 }
 
 /* Mobile adjustments */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .gallery-track img {
-    flex: 0 0 calc(80% - 20px); /* fewer images visible */
-    height: 250px;              /* smaller height */
+    flex: 0 0 calc(70% - 20px); /* narrower on mobile */
+    height: 220px;              /* smaller height */
   }
 }
 
