@@ -27,7 +27,7 @@ header {
 
 /* Logo centered */
 header .logo img {
-  height: 75px;             /* bigger logo */
+  height: 100px;             /* bigger logo */
   width: auto;
   margin-bottom: 5px;      /* space below logo */
 }
