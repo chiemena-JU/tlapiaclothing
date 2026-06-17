@@ -25,7 +25,7 @@ header {
   text-align: center;       /* center everything */
 
   /* Divider line */
-  border-bottom: 1px solid #c0c0c0;  /* thin white line */
+  border-bottom: 2px solid #c0c0c0;  /* thin white line */
 }
 
 /* Logo centered */
