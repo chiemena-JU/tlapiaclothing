@@ -580,3 +580,39 @@ header {
   }
 }
 
+/* Sort bar */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #000;
+}
+
+/* Dropdown select styling */
+.sort-bar select {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  /* remove default browser arrow and add custom */
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.sort-bar select:hover {
+  border-color: #888;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+}
+
+
