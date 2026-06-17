@@ -27,9 +27,9 @@ header {
 
 /* Logo centered */
 header .logo img {
-  height: 60px;             /* bigger logo */
+  height: 75px;             /* bigger logo */
   width: auto;
-  margin-bottom: 20px;      /* space below logo */
+  margin-bottom: 5px;      /* space below logo */
 }
 
 /* Nav links centered below logo */
