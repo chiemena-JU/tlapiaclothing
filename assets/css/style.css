@@ -340,13 +340,6 @@ button:hover, .btn:hover {
 /* Product grid */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* always 3 columns */
-  gap: 25px;
-  padding: 30px;
-}
-
-.product-grid {
-  display: grid;
   grid-template-columns: repeat(3, 1fr); /* always 3 columns by default */
   gap: 25px;
   padding: 30px;
@@ -355,7 +348,7 @@ button:hover, .btn:hover {
 /* Phones (max-width: 700px) → 2 columns */
 @media (max-width: 700px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -467,11 +460,13 @@ button:hover, .btn:hover {
   display: none;
 }
 
+
 /* Header should stay above page content */
 header {
   position: relative;
   z-index: 1000;
 }
+
 
 .logo a {
   color: #fff;
@@ -480,65 +475,167 @@ header {
   font-weight: bold;
 }
 
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu {
+  display: none;
+}
+
+
 /* Mobile styles */
 @media (max-width: 700px) {
 
+
   /* Show hamburger */
   .menu-toggle {
+
     display: block;
+
     background: linear-gradient(145deg, #333, #666);
+
     color: #fff;
+
     border: none;
+
     border-radius: 6px;
+
     padding: 8px 12px;
+
     cursor: pointer;
+
     font-size: 1.4rem;
-    position: relative;
-    z-index: 1002;
-  }
 
-  .search-bar {
-    max-width: 120px;
-    margin: 0 5px;
-  }
-
-  /* Mobile navigation menu */
-  .nav-icons {
-    display: none;
 
     position: absolute;
-    top: 100%;
-    right: 10px;
 
-    background: #1a1a1a;
-    flex-direction: column;
-    padding: 15px;
-    border-radius: 8px;
-    gap: 15px;
+    right: 20px;
 
-    min-width: 180px;
+    top: 45px;
 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 
-    z-index: 1001; /* ABOVE hero video */
+    z-index: 1002;
+
   }
 
-  .nav-icons.show {
-    display: flex;
+
+
+  /* Hide desktop navigation on mobile */
+  .nav-icons {
+
+    display: none;
+
   }
+
+
+
+  .search-bar {
+
+    max-width:120px;
+
+    margin:0 5px;
+
+  }
+
+
+
+  /* Mobile dropdown menu */
+
+  .mobile-menu {
+
+
+    position:absolute;
+
+    top:100%;
+
+    right:20px;
+
+
+    background:#1a1a1a;
+
+
+    width:180px;
+
+
+    padding:20px;
+
+
+    border-radius:8px;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+
+
+    z-index:1001;
+
+
+  }
+
+
+
+  /* Mobile links */
+
+  .mobile-menu a {
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+  }
+
+
+
+  .mobile-menu a:hover {
+
+    color:#c0c0c0;
+
+  }
+
+
+
+  /* Show menu when JS adds show */
+
+  .mobile-menu.show {
+
+    display:flex;
+
+  }
+
+
 }
+
+
+/* Keep logo styling */
 
 .logo a { 
-  color: #fff; 
-  text-decoration: none; 
-  font-size: 1.5rem; 
-  font-weight: bold;
-} 
 
-header { 
-  position: relative; 
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:1.5rem;
+
+  font-weight:bold;
+
 }
 
+
+
+header {
+
+  position:relative;
+
+}
 /* Reviews collapse to 1 per row on mobile */
 @media (max-width: 700px) {
   .elfsight-app-3a7f5102-08ec-4999-9a40-7dc89113f754 .eapps-google-reviews-reviews {
