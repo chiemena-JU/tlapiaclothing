@@ -366,14 +366,10 @@ button:hover, .btn:hover {
   transition: transform 0.2s ease;
   color: #2c2c2c;
 
-  /* Fixed sizing */
-  width: 100%;              /* fills grid column */
-  min-height: 450px;        /* ensures consistent height */
-  height: 450px;            /* fixes height */
-  
+  height: 450px;             /* fixed height for consistency */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* keeps buttons at bottom */
+  align-items: center;       /* keeps everything centered */
 }
 
 
