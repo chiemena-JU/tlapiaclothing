@@ -23,6 +23,9 @@ header {
   color: #c0c0c0;
   padding: 40px 20px;       /* taller header */
   text-align: center;       /* center everything */
+
+  /* Divider line */
+  border-bottom: 1px solid #c0c0c0;  /* thin white line */
 }
 
 /* Logo centered */
