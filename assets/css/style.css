@@ -275,7 +275,7 @@ button:hover, .btn:hover {
   width: 100%;
   text-align: center;
   padding: 60px 40px;   /* top/bottom + left/right padding */
-  background: #f5f5dc;
+  background: #c0c0c0;
   position: relative;
   box-sizing: border-box; /* ensures padding is inside width */
 }
