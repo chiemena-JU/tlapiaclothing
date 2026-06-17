@@ -326,4 +326,33 @@ document.querySelectorAll('.dropdown-menu a').forEach(link => {
   });
 });
 
+// When Add to Cart is clicked, show size selector
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function() {
+    const card = this.closest('.product-card');
+    const sizeSelector = card.querySelector('.size-selector');
+    sizeSelector.style.display = 'block';
+  });
+});
+
+// When Confirm is clicked, add product with size
+document.querySelectorAll('.confirm-size').forEach(button => {
+  button.addEventListener('click', function() {
+    const card = this.closest('.product-card');
+    const productName = card.querySelector('h3').innerText;
+    const productPrice = card.querySelector('p').innerText;
+    const size = card.querySelector('.size').value;
+
+    if (size) {
+      // Example: add to cart array
+      console.log(`Added ${productName} (${size}) - ${productPrice} to cart`);
+      alert(`${productName} (${size}) added to cart!`);
+
+      // Hide selector again
+      card.querySelector('.size-selector').style.display = 'none';
+    } else {
+      alert('Please select a size first!');
+    }
+  });
+});
 
