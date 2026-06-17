@@ -397,9 +397,8 @@ button:hover, .btn:hover {
 }
 
 .product-card button {
-  margin-top: auto;
   width: 100%;
-  margin-bottom: 10px; /* adds space below each button */
+  margin-top: 8px;   /* small gap above each button */
 }
 
 /* Optional: only add space between buttons, not below the last one */
