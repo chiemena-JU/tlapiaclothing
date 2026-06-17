@@ -50,14 +50,51 @@ document.addEventListener("DOMContentLoaded", () => {
 // Cart storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Add to cart
+/* ==========================
+PRODUCT SIZE SELECTION
+========================== */
+
+// Show size selector when Add to Cart is clicked
 document.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Add to Cart")) {
-    let productName = e.target.parentElement.querySelector("h3").textContent;
-    let productPrice = e.target.parentElement.querySelector("p").textContent;
-    cart.push({ name: productName, price: productPrice });
+  if (e.target.classList.contains("add-to-cart")) {
+    const card = e.target.closest(".product-card");
+    const sizeSelector = card.querySelector(".size-selector");
+
+    if (sizeSelector) {
+      sizeSelector.style.display = "block";
+    }
+  }
+});
+
+// Confirm size and add product to cart
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("confirm-size")) {
+    const card = e.target.closest(".product-card");
+
+    const productName = card.querySelector("h3")?.textContent || "Product";
+    const productPrice = card.querySelector("p")?.textContent || "₦0";
+    const size = card.querySelector(".size")?.value;
+
+    if (!size) {
+      alert("Please select a size.");
+      return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+      name: productName,
+      price: productPrice,
+      size: size
+    });
+
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${productName} added to cart!`);
+
+    updateCartCount();
+
+    alert(`${productName} (${size}) added to cart!`);
+
+    card.querySelector(".size-selector").style.display = "none";
   }
 });
 
@@ -74,10 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
       cart.forEach((item, index) => {
         let div = document.createElement("div");
         div.classList.add("cart-item");
+
         div.innerHTML = `
-          <strong>${item.name}</strong> - ${item.price}
+          <strong>${item.name}</strong><br>
+          Size: ${item.size || "N/A"}<br>
+          ${item.price}
           <button class="remove" data-index="${index}">Remove</button>
         `;
+
         cartContainer.appendChild(div);
 
         total += parseFloat(item.price.replace(/₦|,/g, ""));
@@ -202,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let total = 0;
       cart.forEach(item => {
         let div = document.createElement("div");
-        div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+        div.innerHTML = `<strong>${item.name}</strong> (Size: ${item.size || "N/A"}) - ${item.price}`;
         summary.appendChild(div);
 
         total += parseFloat(item.price.replace(/₦|,/g, ""));
@@ -234,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (order) {
       order.cart.forEach(item => {
         let div = document.createElement("div");
-        div.innerHTML = `<strong>${item.name}</strong> - ${item.price}`;
+        div.innerHTML = `<strong>${item.name}</strong> (Size: ${item.size || "N/A"}) - ${item.price}`;
         details.appendChild(div);
       });
 
@@ -245,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Clear last order after showing
       localStorage.removeItem("lastOrder");
     } else {
-      details.innerHTML = "<p>No order found.</p>";
+            details.innerHTML = "<p>No order found.</p>";
     }
   }
 });
@@ -264,7 +305,7 @@ document.addEventListener("DOMContentLoaded", updateCartCount);
 
 // Also update whenever an item is added to cart
 document.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON" && e.target.textContent.includes("Add to Cart")) {
+  if (e.target.classList.contains("confirm-size")) {
     setTimeout(updateCartCount, 100); // slight delay to refresh count
   }
 });
@@ -325,34 +366,3 @@ document.querySelectorAll('.dropdown-menu a').forEach(link => {
     this.closest('.dropdown').classList.remove('active');
   });
 });
-
-// When Add to Cart is clicked, show size selector
-document.querySelectorAll('.add-to-cart').forEach(button => {
-  button.addEventListener('click', function() {
-    const card = this.closest('.product-card');
-    const sizeSelector = card.querySelector('.size-selector');
-    sizeSelector.style.display = 'block';
-  });
-});
-
-// When Confirm is clicked, add product with size
-document.querySelectorAll('.confirm-size').forEach(button => {
-  button.addEventListener('click', function() {
-    const card = this.closest('.product-card');
-    const productName = card.querySelector('h3').innerText;
-    const productPrice = card.querySelector('p').innerText;
-    const size = card.querySelector('.size').value;
-
-    if (size) {
-      // Example: add to cart array
-      console.log(`Added ${productName} (${size}) - ${productPrice} to cart`);
-      alert(`${productName} (${size}) added to cart!`);
-
-      // Hide selector again
-      card.querySelector('.size-selector').style.display = 'none';
-    } else {
-      alert('Please select a size first!');
-    }
-  });
-});
-
