@@ -298,13 +298,32 @@ function updateFavoritesCount() {
   }
 }
 
-document.getElementById('sort').addEventListener('change', function() {
-  const targetId = this.value;
-  if (targetId) {
+// Handle sort dropdown
+const sortDropdown = document.getElementById('sort');
+if (sortDropdown) {
+  sortDropdown.addEventListener('change', function () {
+    const targetId = this.value;
+    if (targetId) {
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+}
+
+// Handle store dropdown links
+document.querySelectorAll('.dropdown-menu a').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
     }
-  }
+    // optional: close dropdown after click
+    this.closest('.dropdown').classList.remove('active');
+  });
 });
+
 
