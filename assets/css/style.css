@@ -262,13 +262,24 @@ button:hover, .btn:hover {
   animation: slideGallery 25s linear infinite;
 }
 
+/* Gallery Heading */
+.gallery h2 {
+  font-family: 'Montserrat', sans-serif; /* same modern font */
+  font-size: 2.5rem;                      /* large size */
+  font-weight: 700;                       /* bold */
+  text-transform: uppercase;              /* all caps */
+  letter-spacing: 2px;                    /* spaced letters */
+  color: #000;                            /* solid black */
+  margin-bottom: 30px;
+}
+
 /* Desktop/Laptop */
 .gallery-track img {
   width: 350px;
   height: 400px;
   flex-shrink: 0;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 20px;
 }
 
 /* Mobile adjustments */
@@ -532,16 +543,5 @@ header {
     padding: 16px 28px;  /* slightly smaller button for balance */
     font-size: 1rem;
   }
-}
-
-/* Gallery Heading */
-.gallery h2 {
-  font-family: 'Montserrat', sans-serif; /* same modern font */
-  font-size: 2.5rem;                      /* large size */
-  font-weight: 700;                       /* bold */
-  text-transform: uppercase;              /* all caps */
-  letter-spacing: 2px;                    /* spaced letters */
-  color: #000;                            /* solid black */
-  margin-bottom: 30px;
 }
 
