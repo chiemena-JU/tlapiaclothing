@@ -298,4 +298,13 @@ function updateFavoritesCount() {
   }
 }
 
+document.getElementById('sort').addEventListener('change', function() {
+  const targetId = this.value;
+  if (targetId) {
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+});
 
