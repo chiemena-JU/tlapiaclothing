@@ -17,32 +17,30 @@ main {
   display: block; /* stack sections vertically */
 }
 
-/* Header (Jumia style) */
+/* Header container */
 header {
   background: #1a1a1a;
   color: #c0c0c0;
-  padding: 24px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 6px rgba(255,255,255,0.2);
+  padding: 40px 20px;       /* taller header */
+  text-align: center;       /* center everything */
 }
 
-/* Logo */
+/* Logo centered */
 header .logo img {
-  height: 40px;
+  height: 60px;             /* bigger logo */
   width: auto;
-  display: block;
+  margin-bottom: 20px;      /* space below logo */
 }
 
-
-/* Right-side nav icons */
+/* Nav links centered below logo */
 .nav-icons {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  gap: 30px;
   align-items: center;
 }
 
+/* General nav link styling */
 .nav-link {
   color: #e0e0e0;
   text-decoration: none;
@@ -50,23 +48,50 @@ header .logo img {
   display: flex;
   align-items: center;
   gap: 6px;
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover {
   color: #fff;
 }
 
-/* Store icon */
-.nav-link.store .icon {
-  font-size: 1.2rem;
+/* Dropdown container */
+.dropdown {
+  position: relative;
 }
 
-/* Essentials icon */
-.nav-link.essentials .icon {
-  font-size: 1.2rem;
+/* Dropdown menu hidden by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;                /* below Store link */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  z-index: 1000;
 }
 
-/* Favorites heart (outlined with counter) */
+.dropdown-menu a {
+  display: block;
+  padding: 10px 14px;
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.dropdown-menu a:hover {
+  background: #f0f0f0;
+}
+
+/* Show dropdown on hover (desktop) */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Favorites heart with counter */
 .nav-link.favorites {
   position: relative;
 }
@@ -107,6 +132,16 @@ header .logo img {
   margin-left: 4px;
   display: inline-block;
   line-height: 1;
+}
+
+/* Mobile dropdown toggle (click instead of hover) */
+@media (max-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: none; /* disable hover on mobile */
+  }
+  .dropdown.active .dropdown-menu {
+    display: block; /* show when clicked */
+  }
 }
 
 /* Footer */
