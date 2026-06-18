@@ -151,11 +151,15 @@ document.addEventListener("click", (e) => {
         localStorage.getItem("cart")
       ) || [];
 
-    cart.push({
-      name,
-      price,
-      size
-    });
+   const image =
+  card.querySelector("img").src;
+
+cart.push({
+  name,
+  price,
+  size,
+  image
+});
 
     localStorage.setItem(
       "cart",
@@ -324,33 +328,69 @@ document.addEventListener("DOMContentLoaded", () => {
       div.classList.add("cart-item");
 
       div.innerHTML = `
-        <strong>${item.name}</strong><br>
-        Size: ${item.size}<br>
-        ${item.price}
-        <button
+  <div class="cart-card">
+
+    <div class="cart-image">
+      <img
+        src="${item.image || 'assets/images/placeholder.png'}"
+        alt="${item.name}">
+    </div>
+
+    <div class="cart-details">
+  <h3>${item.name}</h3>
+  <p>Size: ${item.size}</p>
+  <p>Qty: 1</p>
+  
+      <button
         class="remove"
         data-index="${index}">
-        Remove
-        </button>
-      `;
+        🗑 Remove
+      </button>
+    </div>
+
+    <div class="cart-price">
+      <h2>${item.price}</h2>
+    </div>
+
+  </div>
+`;
 
       container.appendChild(div);
     });
 
     container.innerHTML += `
-      <div class="cart-total">
-        <h3>
-          Total:
-          ₦${total.toLocaleString()}
-        </h3>
-      </div>
-    `;
+<div class="cart-summary">
+  <h2>Cart Summary</h2>
+
+  <p>
+    Items:
+    ${cart.length}
+  </p>
+
+  <h3>
+    ₦${total.toLocaleString()}
+  </h3>
+
+  <button id="checkoutBtn">
+    Checkout
+  </button>
+</div>
+`;
+
   }
 
   document
-    .querySelector("main")
-    .appendChild(container);
+  .querySelector("main")
+  .appendChild(container);
 
+const checkoutBtn =
+  document.getElementById("checkoutBtn");
+
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", () => {
+    window.location.href = "checkout.html";
+  });
+}
   container.addEventListener(
     "click",
     (e) => {
@@ -449,20 +489,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const checkoutBtn =
-    document.getElementById("checkoutBtn");
-
-  if (checkoutBtn) {
-
-    checkoutBtn.addEventListener("click", () => {
-
-      window.location.href =
-        "checkout.html";
-
-    });
-
-  }
-
   if (!document.title.includes("Checkout"))
     return;
 
@@ -528,8 +554,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "lastOrder",
           JSON.stringify({
             cart,
-            paymentMethod:
-              payment.value
+            paymentMethod: payment.value
           })
         );
 
