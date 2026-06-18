@@ -819,3 +819,67 @@ main h2 {
   font-size:1rem;
   cursor:pointer;
 }
+
+.success-box{
+  text-align:center;
+  padding:40px;
+}
+
+.success-box h1{
+  color:#4caf50;
+  font-size:2.5rem;
+}.success-box{
+  text-align:center;
+  padding:40px;
+}
+
+.success-box h1{
+  color:#4caf50;
+  font-size:2.5rem;
+}
+
+#imageModal{
+  display:none;
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.9);
+
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+}
+
+#modalImage{
+  max-width:90%;
+  max-height:90%;
+}
+
+@media(max-width:700px){
+
+.cart-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.cart-image img{
+
+width:100%;
+
+max-width:250px;
+
+height:auto;
+
+}
+
+.cart-price{
+
+margin-top:10px;
+
+}
+
+}
