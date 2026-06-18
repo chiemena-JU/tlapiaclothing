@@ -65,7 +65,11 @@ function updateCartCount() {
     const cart =
       JSON.parse(localStorage.getItem("cart")) || [];
 
-    count.textContent = cart.length;
+    count.textContent =
+cart.reduce(
+  (total, item) => total + item.quantity,
+  0
+);
   }
 }
 
@@ -161,8 +165,10 @@ const existingItem = cart.find(
 );
 
 if (existingItem) {
-  existingItem.quantity += 1;
-} else {
+  existingItem.quantity =
+  (existingItem.quantity || 1) + 1;
+}
+else {
   cart.push({
     name,
     price,
@@ -382,7 +388,12 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <div class="cart-price">
-      <h2>${item.price}</h2>
+      <h2>
+         ₦${(
+         parseFloat(item.price.replace(/₦|,/g, "")) 
+         * item.quantity
+         ).toLocaleString()}
+         </h2>
     </div>
 
   </div>
@@ -463,8 +474,9 @@ if (checkoutBtn) {
       const index =
         e.target.dataset.index;
 
-      cart[index].quantity++;
-
+      cart[index].quantity =
+      (cart[index].quantity || 1) + 1;
+       
       localStorage.setItem(
         "cart",
         JSON.stringify(cart)
@@ -484,7 +496,7 @@ if (checkoutBtn) {
       const index =
         e.target.dataset.index;
 
-      if (cart[index].quantity > 1) {
+      if ((cart[index].quantity || 1) > 1) {
 
         cart[index].quantity--;
 
