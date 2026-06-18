@@ -154,12 +154,23 @@ document.addEventListener("click", (e) => {
    const image =
   card.querySelector("img").src;
 
-cart.push({
-  name,
-  price,
-  size,
-  image
-});
+const existingItem = cart.find(
+  item =>
+    item.name === name &&
+    item.size === size
+);
+
+if (existingItem) {
+  existingItem.quantity += 1;
+} else {
+  cart.push({
+    name,
+    price,
+    size,
+    image,
+    quantity: 1
+  });
+}
 
     localStorage.setItem(
       "cart",
