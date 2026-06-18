@@ -759,15 +759,16 @@ main h2 {
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:20px;
-  padding:20px;
 
-  background:#fff;
-  border-radius:10px;
+  padding:20px;
   margin-bottom:15px;
 
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  background:#2c2c2c;
+  border:1px solid #555;
+  border-radius:10px;
+
+  color:#fff;
 }
 
 .cart-image img{
@@ -786,8 +787,7 @@ main h2 {
 }
 
 .cart-price h2{
-  color:#111;
-  font-size:2rem;
+  color:#c0c0c0;
 }
 
 .remove{
