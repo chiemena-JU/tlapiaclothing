@@ -329,9 +329,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cart.forEach((item, index) => {
 
-      total += parseFloat(
-        item.price.replace(/₦|,/g, "")
-      );
+  total += 
+  parseFloat(
+    item.price.replace(/₦|,/g, "")
+  ) * item.quantity;
+
 
       const div =
         document.createElement("div");
@@ -348,9 +350,29 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <div class="cart-details">
-  <h3>${item.name}</h3>
-  <p>Size: ${item.size}</p>
-  <p>Qty: 1</p>
+              <h3>${item.name}</h3>
+              <p>Size: ${item.size}</p>
+            
+            <div class="quantity-controls">
+            
+            <button
+            class="decrease"
+            data-index="${index}">
+            -
+            </button>
+            
+            <span>
+            ${item.quantity}
+            </span>
+            
+            <button
+            class="increase"
+            data-index="${index}">
+            +
+            </button>
+            
+            </div>
+              <p>Qty: ${item.quantity}</p>
   
       <button
         class="remove"
@@ -374,8 +396,12 @@ document.addEventListener("DOMContentLoaded", () => {
   <h2>Cart Summary</h2>
 
   <p>
-    Items:
-    ${cart.length}
+   Items:
+      ${cart.reduce(
+      (total,item)=>
+      total + item.quantity,
+      0
+      )}
   </p>
 
   <h3>
@@ -402,30 +428,78 @@ if (checkoutBtn) {
     window.location.href = "checkout.html";
   });
 }
-  container.addEventListener(
-    "click",
-    (e) => {
+ container.addEventListener(
+  "click",
+  (e) => {
 
-      if (
-        e.target.classList.contains(
-          "remove"
-        )
-      ) {
+    // REMOVE ITEM
+    if (
+      e.target.classList.contains(
+        "remove"
+      )
+    ) {
 
-        const index =
-          e.target.dataset.index;
+      const index =
+        e.target.dataset.index;
 
-        cart.splice(index, 1);
+      cart.splice(index, 1);
 
-        localStorage.setItem(
-          "cart",
-          JSON.stringify(cart)
-        );
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+      );
 
-        location.reload();
-      }
+      location.reload();
     }
-  );
+
+
+    // INCREASE QUANTITY
+    if (
+      e.target.classList.contains(
+        "increase"
+      )
+    ) {
+
+      const index =
+        e.target.dataset.index;
+
+      cart[index].quantity++;
+
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+      );
+
+      location.reload();
+    }
+
+
+    // DECREASE QUANTITY
+    if (
+      e.target.classList.contains(
+        "decrease"
+      )
+    ) {
+
+      const index =
+        e.target.dataset.index;
+
+      if (cart[index].quantity > 1) {
+
+        cart[index].quantity--;
+
+      }
+
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+      );
+
+      location.reload();
+    }
+
+  }
+);
 });
 
 /* =========================
@@ -527,9 +601,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     summary.appendChild(div);
 
-    total += parseFloat(
-      item.price.replace(/₦|,/g, "")
-    );
+    total += 
+parseFloat(
+  item.price.replace(/₦|,/g, "")
+) * item.quantity;
 
   });
 
@@ -649,17 +724,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
 order.cart.forEach(item => {
 
-  total += parseFloat(
-    item.price.replace(/₦|,/g, "")
-  );
+  total += 
+parseFloat(
+  item.price.replace(/₦|,/g, "")
+) * item.quantity;
 
 });
    details.innerHTML += `
-  <h3>
-    Total:
-    ₦${total.toLocaleString()}
-  </h3>
+  <div class="success-box">
+
+<h1>
+✓ Order Confirmed
+</h1>
+
+<p>
+Thank you for shopping
+with Tlapia Clothing.
+</p>
+
+<h3>
+₦${total.toLocaleString()}
+</h3>
+
+</div>
 `;
 
 });
 
+document.addEventListener(
+"click",
+e=>{
+
+if(
+e.target.closest(".product-card img")
+){
+
+const modal =
+document.getElementById(
+"imageModal"
+);
+
+const img =
+document.getElementById(
+"modalImage"
+);
+
+img.src = e.target.src;
+
+modal.style.display =
+"flex";
+
+}
+
+if(
+e.target.id==="imageModal"
+){
+
+e.target.style.display=
+"none";
+
+}
+
+});
