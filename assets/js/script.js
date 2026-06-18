@@ -15,9 +15,25 @@ async function loadComponent(id, file) {
     document.getElementById(id).innerHTML = html;
 
     if (id === "header") {
-      updateCartCount();
-      updateFavoritesCount();
-    }
+  updateCartCount();
+  updateFavoritesCount();
+
+  const menuToggle =
+    document.getElementById("menuToggle");
+
+  const navMenu =
+    document.getElementById("navMenu");
+
+  if (menuToggle && navMenu) {
+
+    menuToggle.addEventListener("click", () => {
+
+      navMenu.classList.toggle("show");
+
+    });
+
+  }
+}
   } catch (error) {
     console.error(error);
   }
@@ -425,25 +441,6 @@ document.addEventListener("DOMContentLoaded", () => {
       "searchQuery"
     );
   }
-});
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.getElementById("navMenu");
-
-
-  if(menuToggle && navMenu){
-
-    menuToggle.addEventListener("click",()=>{
-
-      navMenu.classList.toggle("show");
-
-    });
-
-  }
-
-
 });
 
 /* =========================
