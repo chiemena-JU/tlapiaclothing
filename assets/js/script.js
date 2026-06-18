@@ -445,3 +445,172 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 });
+
+/* =========================
+   CHECKOUT PAGE
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const checkoutBtn =
+    document.getElementById("checkoutBtn");
+
+  if (checkoutBtn) {
+
+    checkoutBtn.addEventListener("click", () => {
+
+      window.location.href =
+        "checkout.html";
+
+    });
+
+  }
+
+  if (!document.title.includes("Checkout"))
+    return;
+
+  const summary =
+    document.getElementById("order-summary");
+
+  if (!summary) return;
+
+  const cart =
+    JSON.parse(localStorage.getItem("cart"))
+    || [];
+
+  let total = 0;
+
+  cart.forEach(item => {
+
+    const div =
+      document.createElement("div");
+
+    div.innerHTML = `
+      <strong>${item.name}</strong>
+      (${item.size})
+      - ${item.price}
+    `;
+
+    summary.appendChild(div);
+
+    total += parseFloat(
+      item.price.replace(/₦|,/g, "")
+    );
+
+  });
+
+  summary.innerHTML += `
+    <h3>
+      Total:
+      ₦${total.toLocaleString()}
+    </h3>
+  `;
+
+  const placeOrderBtn =
+    document.getElementById("placeOrderBtn");
+
+  if (placeOrderBtn) {
+
+    placeOrderBtn.addEventListener(
+      "click",
+      () => {
+
+        const payment =
+          document.querySelector(
+            'input[name="payment"]:checked'
+          );
+
+        if (!payment) {
+          alert(
+            "Please select a payment method."
+          );
+          return;
+        }
+
+        localStorage.setItem(
+          "lastOrder",
+          JSON.stringify({
+            cart,
+            paymentMethod:
+              payment.value
+          })
+        );
+
+        localStorage.removeItem("cart");
+
+        updateCartCount();
+
+        window.location.href =
+          "confirmation.html";
+      }
+    );
+
+  }
+
+});
+
+/* =========================
+   CONFIRMATION PAGE
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (
+    !document.title.includes(
+      "Confirmation"
+    )
+  ) return;
+
+  const details =
+    document.getElementById(
+      "confirmation-details"
+    );
+
+  if (!details) return;
+
+  const order =
+    JSON.parse(
+      localStorage.getItem(
+        "lastOrder"
+      )
+    );
+
+  if (!order) {
+
+    details.innerHTML =
+      "<p>No order found.</p>";
+
+    return;
+
+  }
+
+  order.cart.forEach(item => {
+
+    const div =
+      document.createElement("div");
+
+    div.innerHTML = `
+      <strong>${item.name}</strong>
+      (${item.size})
+      - ${item.price}
+    `;
+
+    details.appendChild(div);
+
+  });
+
+  const paymentDiv =
+    document.createElement("div");
+
+  paymentDiv.innerHTML = `
+    <p>
+      Payment Method:
+      <strong>
+        ${order.paymentMethod}
+      </strong>
+    </p>
+  `;
+
+  details.appendChild(paymentDiv);
+
+});
