@@ -59,30 +59,27 @@ let favorites =
 ========================= */
 
 function updateCartCount() {
-  const count = document.getElementById("cart-count");
+  const counts =
+    document.querySelectorAll(".cart-count");
 
-  if (count) {
-    const cart =
-      JSON.parse(localStorage.getItem("cart")) || [];
+  const cart =
+    JSON.parse(localStorage.getItem("cart")) || [];
 
-    count.textContent =
-cart.reduce(
-  (total, item) => total + item.quantity,
-  0
-);
-  }
+  counts.forEach(count => {
+    count.textContent = cart.length;
+  });
 }
 
 function updateFavoritesCount() {
-  const count =
-    document.getElementById("favorites-count");
+  const counts =
+    document.querySelectorAll(".favorites-count");
 
-  if (count) {
-    const favorites =
-      JSON.parse(localStorage.getItem("favorites")) || [];
+  const favorites =
+    JSON.parse(localStorage.getItem("favorites")) || [];
 
+  counts.forEach(count => {
     count.textContent = favorites.length;
-  }
+  });
 }
 
 /* =========================
