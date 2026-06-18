@@ -537,7 +537,6 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         localStorage.removeItem("cart");
-
         updateCartCount();
 
         window.location.href =
@@ -612,6 +611,22 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
 
   details.appendChild(paymentDiv);
+
+   let total = 0;
+
+order.cart.forEach(item => {
+
+  total += parseFloat(
+    item.price.replace(/₦|,/g, "")
+  );
+
+});
+   details.innerHTML += `
+  <h3>
+    Total:
+    ₦${total.toLocaleString()}
+  </h3>
+`;
 
 });
 
