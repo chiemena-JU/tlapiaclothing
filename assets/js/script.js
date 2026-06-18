@@ -614,3 +614,4 @@ document.addEventListener("DOMContentLoaded", () => {
   details.appendChild(paymentDiv);
 
 });
+
