@@ -378,7 +378,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
             
             </div>
-              <p>Qty: ${item.quantity}</p>
+              
   
       <button
         class="remove"
